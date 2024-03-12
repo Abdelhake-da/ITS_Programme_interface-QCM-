@@ -1,0 +1,78 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title_content %}
+    Thompson Sampler
+{% endblock title_content %}
+
+{% block styles_content %}
+    <link rel="stylesheet" href="{% static 'css/exam.css' %}">
+{% endblock styles_content %}
+{% block left_side_content %}
+    {% if student != None %}
+    <form action="/" method="get">
+        {% csrf_token %}
+        <button type="submit" name="student" value = "{{student.student_id}}">{{student.name}}</button>
+    </form>
+        
+    {% endif %}
+{% endblock left_side_content %}
+{% block body_conten %}
+    {% if get_questions != None %}
+        <div class="container">
+            <h1>Thompson Sampler</h1>
+            <div id="timer">00:00.000</div>
+            <div class="c-timer">
+                <button id="stop">Stop</button>
+                <button id="play">Play</button>
+            </div>
+
+            <form method="POST" action="/">
+                    {% csrf_token %}
+                <p class="question">What is {{ question }}?</p>
+                <input type="number" name="answer" required autofocus>
+                <input type="hidden" name="arm" value="{{ arm }}">
+                <input type="hidden" id="time" name="time">
+                <input type="submit" id="submit" value="Submit">
+            </form>
+            {% if feedback %}
+                {% if feedback.0 == 0 %}
+            <p class="feedback-success">{{ feedback.1 }}</p>
+            {% else %}
+            <p class="feedback-error">{{ feedback.1 }}</p>
+            {% endif %}
+            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Correct</th>
+                        <th>Incorrect</th>
+                        <th>Max Time</th>
+                        <th>Min Time</th>
+                        <th>Average Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td> {{ result.question }}</td>
+                        <td> {{ result.correct }}</td>
+                        <td> {{ result.incorrect }}</td>
+                        <td> {{ result.max_time }}</td>
+                        <td> {{ result.min_time }}</td>
+                        <td> {{ result.average_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    
+
+{% endblock body_conten %}
+
+{% block scripts_content %}
+    <script src="{% static './js/script.js' %}"></script>
+{% endblock scripts_content %}
+    

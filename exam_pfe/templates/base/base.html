@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> {% block title_content %}{% endblock title_content %} </title>
+    {% block styles_content %}{% endblock styles_content %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="my_container">
+         <div class="left-side">
+            {% block left_side_content %}{% endblock left_side_content %}
+        </div>
+        <div class="right-side">
+            {% block body_conten %}{% endblock body_conten %}
+            {% block scripts_content %}{% endblock scripts_content %}
+        </div>
+    </div>
+   
+    
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+.my_container{
+    display: flex;
+}
+.left-side{
+    width: 200px;
+
+    border: 1px solid black;
+    height: 500px;
+    padding: 30px 10px;
+
+}
+.right-side{
+    padding: 30px 10px;
+}
