@@ -1,16 +1,40 @@
 import random
+from django.http import HttpResponse
 from django.shortcuts import render
+# from .data import questions2 as questions
+import json
+from .models import Module, Course, Question, PossibleChoice, CorrectAnswer
 
-from .models import Student
-from .data import questions
+
+# from .data import questions
 from .classes.thompson_sampler import ThompsonSampler
 
-student = Student(name="Abdelhake")
-sampler = ThompsonSampler(questions)
 
+def get_data_from_db(module, course):
+    module_model = Module.objects.get(name=module)
+    course_model = Course.objects.get(name=course, module=module_model)
+    questions = Question.objects.filter(course=course_model)
+    questions_list = []
+    for question in questions:
+        questions_list.append(
+            {
+                "question": question.text,
+                "possible_choses": list(
+                    PossibleChoice.objects.filter(question=question).values_list(
+                        "choice_text", "choice_value"
+                    ),
+                ),
+                "correct_answer": list(
+                    CorrectAnswer.objects.filter(question=question).values_list(
+                        "answer_value", flat=True
+                    )
+                ),
+            }
+        )
+
+    return questions_list
 def home(request):
     context = {
-        "student": student,
         "get_questions": None,
     }
     return render(request, "index.html",context=context)
@@ -19,17 +43,29 @@ def is_correct(answer, correct_answer):
     if len(answer) != len(correct_answer):
         return False
     else:
-        print("hello")
         for i in range(len(answer)):
             if int(answer[i]) not in correct_answer:
                 return False
         return True
+
 def solution(question):
     strs =  "Oops, your answer was incorrect. The correct answer is:"
     for i in question["correct_answer"]: 
        strs += str(question["possible_choses"][i - 1][0])
     return strs    
-def index(request):
+def get_courses():
+    modules = list(Module.objects.filter())
+    courses = {}
+    for module in modules:
+        courses[module.name] = []
+        for course in list(Course.objects.filter(module=module)):
+            courses[module.name].append(course.name)
+    return courses
+questions = None
+sampler = None
+def prepare_exam(request, module_name, course_name):
+    global questions, sampler
+
     if request.method == "POST":
         time_taken = float(request.POST.get("time"))
         answer = request.POST.getlist("answer[]")
@@ -40,10 +76,7 @@ def index(request):
         feedback = (
             [0, "You answered correctly!"]
             if success
-            else [
-                1,
-                solution(questions[int(request.POST.get("arm"))])
-            ]
+            else [1, solution(questions[int(request.POST.get("arm"))])]
         )
         arm = sampler.select_arm()
         question = questions[arm]["question"]
@@ -69,8 +102,9 @@ def index(request):
 
         return render(
             request,
-            "index_copy.html",
+            "index_copy copy.html",
             {
+                "courses": get_courses(),
                 "question": question,
                 "possible_choses": random.sample(possible_choses, len(possible_choses)),
                 "arm": arm,
@@ -79,16 +113,80 @@ def index(request):
             },
         )
     else:
+        questions = get_data_from_db(module_name, course_name)
+        sampler = ThompsonSampler(questions)
         arm = sampler.select_arm()
         question = questions[arm]["question"]
         possible_choses = questions[arm]["possible_choses"]
         return render(
             request,
-            "index_copy.html",
+            "index_copy copy.html",
             {
+                "courses": get_courses(),
                 "question": question,
                 "possible_choses": random.sample(possible_choses, len(possible_choses)),
                 "arm": arm,
                 "feedback": [0, ""],
             },
         )
+def index(request):
+    return render(
+        request,
+        "index_copy.html",
+        {
+            "courses": get_courses(),
+        },
+    )
+
+
+def courses(request, module_name, course_name):
+    return HttpResponse(course_name)
+
+
+def module(request, module_name):
+    return HttpResponse(module_name)
+
+
+def upload_json_file():
+    with open("/home/mr-abdelhake/Documents/projetFE/ITS_Programme_interface(QCM)/exam_pfe/app/data.json", "r") as file:
+        data = json.load(file)
+        for module in data:
+            module_name = module["module"]
+            module_model = Module.objects.get_or_create(name=module_name)
+            for course in module["course"]:
+                course_name = course["cours"]
+                course_model = Course.objects.get_or_create(name=course_name, module = module_model[0])
+
+                if len(course["type"]["qcm"]) > 1:
+                    questions = course["type"]["qcm"]
+                    for question in questions:
+                        qcm_txt = question["question"]
+                        question_model = Question.objects.get_or_create(
+                            text=qcm_txt, course=course_model[0],question_type="qcm"
+                        )
+                        qcm_choices = question["choices"]
+                        for choice in qcm_choices:
+                            choice_text = choice["text"]
+                            choice_value = int(choice["value"])
+                            PossibleChoice.objects.get_or_create(
+                                choice_text=choice_text,
+                                choice_value=choice_value,
+                                question=question_model[0],
+                            )
+                        qcm_answers = question["answers"]
+                        for answer in qcm_answers:
+                            CorrectAnswer.objects.get_or_create(
+                                answer_value=answer, question=question_model[0]
+                            )
+                if len(course["type"]["not qcm"]) > 1:
+                    questions = course["type"]["not qcm"]
+                    for question in questions:
+                        not_qcm_txt = question["question"]
+                        not_qcm_answers = question["answers"]
+                        question_model = Question.objects.get_or_create(
+                            text=not_qcm_txt, course=course_model,question_type="one_word"
+                        )
+                        for answer in not_qcm_answers:
+                            CorrectAnswer.objects.get_or_create(
+                                value=answer, question=question_model
+                            )

@@ -1,24 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> {% block title_content %}{% endblock title_content %} </title>
-    {% block styles_content %}{% endblock styles_content %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-</head>
-<body>
-    <div class="my_container">
-         <div class="left-side">
-            {% block left_side_content %}{% endblock left_side_content %}
-        </div>
-        <div class="right-side">
-            {% block body_conten %}{% endblock body_conten %}
-            {% block scripts_content %}{% endblock scripts_content %}
-        </div>
-    </div>
-   
+    <link rel="stylesheet" href="{% static 'css/cours_list.css' %}">
+    {% block styles_content %}{% endblock styles_content %}
     
-</body>
-
+  </head>
+  <body>
+    <div class="container1">
+      <div class="moduls">
+        <h1 class="title">moduls</h1>
+        <ul class="items">
+          {% for key,val in courses.items %}
+           <li class="item"><a href="{% url 'module' module_name=key %}"><span>{{key}} ></a></span>
+            <ul class="subitems">
+              {% for va in val %}
+                <li class="subitem"><a href="{% url 'course' module_name=key course_name=va %}">{{va}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="main">
+        <div class="user">
+          <h1>user</h1>
+        </div>
+        <div class="exam">
+         {% block body_conten %}{% endblock body_conten %}
+        </div>
+      </div>
+    </div>
+    {% block scripts_content %}{% endblock scripts_content %}
+  </body>
 </html>
+

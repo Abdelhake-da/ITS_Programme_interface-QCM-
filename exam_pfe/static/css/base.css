@@ -1,14 +1,8 @@
-.my_container{
-    display: flex;
-}
-.left-side{
-    width: 200px;
-
-    border: 1px solid black;
-    height: 500px;
-    padding: 30px 10px;
-
-}
-.right-side{
-    padding: 30px 10px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    color: black
 }
