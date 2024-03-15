@@ -48,7 +48,7 @@ class PossibleChoice(models.Model):
 
 class CorrectAnswer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer_value = models.IntegerField()
+    answer_value = models.CharField(max_length=90)
 
     def __str__(self):
         return str(self.answer_value)

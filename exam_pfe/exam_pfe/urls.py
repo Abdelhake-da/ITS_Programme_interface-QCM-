@@ -24,7 +24,7 @@ urlpatterns = [
     path("home", views.home, name="home"),
     path(
         "module/<str:module_name>/courses/<str:course_name>",
-        views.prepare_exam,
+        views.prepare_exam_q_learning,
         name="course",
     ),
     path(
@@ -32,4 +32,5 @@ urlpatterns = [
         views.module,
         name="module",
     ),
+    path("upload_data", views.upload_json_file, name="upload_data"),
 ]
