@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Module(models.Model):
     name = models.CharField(max_length=100)
 
@@ -24,10 +23,11 @@ class Question(models.Model):
 
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     question_type = models.CharField(max_length=10, choices=COURSE_QUESTION_TYPES)
-    text = models.TextField()
+    # text = models.TextField()
+    question = models.JSONField(default=list, blank=True)
 
     def __str__(self):
-        return self.text
+        return f"{self.course.name} - {self.question_type}"
 
 
 class CourseFile(models.Model):
@@ -63,8 +63,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
-
-
 
 
 class Student_Course_Reward(models.Model):

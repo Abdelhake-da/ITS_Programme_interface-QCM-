@@ -25,9 +25,10 @@
         <form method="POST" >
                 {% csrf_token %}
             <p class="question">{{ question }}</p>
+            
             {% for chose in possible_choses %}
-            <input type="checkbox" id={{chose.1|concat:"chose"}} name="answer[]" value={{chose.1}}>
-            <label for={{chose.1|concat:"chose"}}>{{chose.0}}</label><br>
+            <input type="checkbox" id={{chose.value|concat:"chose"}} name="answer[]" value={{chose.value}}>
+            <label for={{chose.value|concat:"chose"}}>{{chose.text}}</label><br>
             {% endfor %}
             <input type="hidden" name="arm" value="{{ arm }}">
             <input type="hidden" id="time" name="time">
