@@ -3,13 +3,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 # from .data import questions2 as questions
 import json
-from .models import Module, Course, Question, PossibleChoice, CorrectAnswer
+from .models import Module, Course, Question, PossibleChoice, CorrectAnswer, Student, Student_Course_Reward
 
 
 # from .data import questions
 from .classes.thompson_sampler import ThompsonSampler
 from .classes.q_learning import Q_learning
 
+
+student = Student.objects.get(student_id=1)
 
 def get_data_from_db(module, course, type):
     module_model = Module.objects.get(name=module)
@@ -45,15 +47,14 @@ def is_correct(answer, correct_answer):
         return False
     else:
         for i in range(len(answer)):
-            if int(answer[i]) not in correct_answer:
+            if answer[i] not in correct_answer:
                 return False
         return True
-
 
 def solution(question):
     strs =  "Oops, your answer was incorrect. The correct answer is:"
     for i in question["correct_answer"]: 
-       strs += str(question["possible_choses"][i - 1][0])
+       strs += str(question["possible_choses"][int(i) - 1][0])
     return strs    
 def get_courses():
     modules = list(Module.objects.filter())
@@ -65,7 +66,7 @@ def get_courses():
     return courses
 questions = None
 sampler = None
-def prepare_exam_thompson(request, module_name, course_name):
+def prepare_exam(request, module_name, course_name):
     global questions, sampler
 
     if request.method == "POST":
@@ -132,7 +133,6 @@ def prepare_exam_thompson(request, module_name, course_name):
             },
         )
 
-
 def prepare_exam_q_learning(request, module_name, course_name):
     global questions, sampler
 
@@ -151,7 +151,7 @@ def prepare_exam_q_learning(request, module_name, course_name):
             if success
             else [1, solution(questions[int(request.POST.get("arm"))])]
         )
-        arm = sampler.select_action(int(request.POST.get("arm")))
+        arm = sampler.select_action()
         question = questions[arm]["question"]
         possible_choses = questions[arm]["possible_choses"]
         results = []
@@ -186,8 +186,9 @@ def prepare_exam_q_learning(request, module_name, course_name):
             },
         )
     else:
+        scr = Student_Course_Reward.objects.get_or_create(student = student,course = Course.objects.get(name=course_name))
         questions = get_data_from_db(module_name, course_name, "qcm")
-        sampler = Q_learning(questions)
+        sampler = Q_learning(questions, scr[0])
         arm = sampler.select_action()
         question = questions[arm]["question"]
         possible_choses = questions[arm]["possible_choses"]

@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Module(models.Model):
     name = models.CharField(max_length=100)
 
@@ -52,3 +53,24 @@ class CorrectAnswer(models.Model):
 
     def __str__(self):
         return str(self.answer_value)
+
+
+class Student(models.Model):
+    student_id = models.IntegerField()
+    user_name = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+
+
+class Student_Course_Reward(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    questions_reward = models.JSONField(default=list, blank=True)
+    
+    def __str__(self):
+        return f"{str(self.student)}_{str(self.course)}"
