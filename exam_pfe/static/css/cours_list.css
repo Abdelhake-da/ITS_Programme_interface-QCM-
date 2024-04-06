@@ -4,7 +4,6 @@
     width: 100vw;
 }
 .moduls{
-    /* background-color: red; */
     width: 300px;   
     display: flex;
     flex-direction: column;
@@ -52,7 +51,9 @@
     background-color: rgb(195, 195, 241);
 }
 .exam{
+    width: 100%;
     background-color: white;
-    margin: 50px auto;
+    margin: 0 auto;
+    padding-bottom: 20px;
     overflow-y: auto;
 }

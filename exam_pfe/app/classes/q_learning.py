@@ -2,49 +2,47 @@ from collections import defaultdict
 import json
 import random
 import numpy as np
-class Q_learning:
 
-    def __init__(self, questions, student=[]):
+from app.classes.student import Student_class
+
+
+class Q_learning:
+    def __init__(self, questions,std):
         self.n_states = len(questions)
         self.states = questions
-        self.n_actions = 1
-        self.alpha = 0.1
-        self.gamma = 0.9
-        self.epsilon = 0.15
+        self.n_actions : int= 1
+        self.alpha : float = 0.1
+        self.gamma : float = 0.9
+        self.epsilon : float = 0.1
         self.successes = defaultdict(int)
         self.failures = defaultdict(int)
         self.times = defaultdict(list)
-        self.student = student
-        if student.questions_reward == [] :
-            self.q_table = (np.ones(self.n_states) * 2) + (
-                np.random.rand(self.n_states) / 5
-            )
-            self.update_student(self.q_table.tolist())
-            student.questions_reward = json.dumps(self.q_table.tolist())
-            student.save()
-        else:
-            self.q_table = json.loads(student.questions_reward)
+        self.index : int = 1
+        self.randomNum : int = random.randint(1,100)
+        self.std: Student_class = std
         self.successive = defaultdict(int)
+        self.q_table, self.successes, self.failures, self.times = std.init_list(self.n_states)
+
         self.print_q_table()
-    def update_student(self,tbl):
-        self.student.questions_reward = json.dumps(tbl)
-        self.student.save()
-    def select_action(self, state = None, chose_rand=False):
-        old_state = state
-        new_state = None
+    def select_action(self):
+        chose_rand = False
+        calc = int((self.randomNum * len(self.q_table) )/ 100)+1
+        print(calc," -- == == -- == --", self.index)
+        if self.index % calc == 0:
+            chose_rand = True
+            self.randomNum = random.randint(1, 100)
+            self.index = 1
+        else:
+            self.index = self.index + 1
         # Select next question using epsilon-greedy policy
         if random.random() < self.epsilon or chose_rand:
-            new_state = random.choice(range(self.n_states))
+            return random.choice(range(self.n_states))
         else:
-            new_state = np.argmax(self.q_table[:])
-        if old_state == new_state:
-            if(self.successive[new_state] > 2):
-                new_state = self.select_action(state=new_state,chose_rand=True)
-            else:
-                self.successive[new_state] += 1
-        else:
-            self.successive[new_state] = self.successive[new_state] - 1 if self.successive[new_state] > 0 else 0
-        return new_state
+            return (
+                np.argmax(self.q_table[:])
+                if len(self.q_table) > 0
+                else random.choice(range(self.n_states))
+            )
     def get_reward(self, answer,arm,time_taken):
         # Return reward based on answer
         if answer :
@@ -52,24 +50,27 @@ class Q_learning:
             self.times[arm].append(time_taken)
         else:
             self.failures[arm] += 1
-        t = time_taken/60000 if answer else 0 
-        rand = np.random.random( )/4
+
+        avrg = sum(self.times[arm])/len(self.times[arm]) if len(self.times[arm]) > 0 else 0
+        m = max(self.times[arm])-min(self.times[arm]) if len(self.times[arm]) >= 2 else (max(self.times[arm]) if len(self.times[arm]) > 0 else 1)
+        # rand = np.random.random( )/4
         return (
             (
-                (self.failures[arm] - self.successes[arm] * 4)
+                (self.failures[arm] - self.successes[arm] * 2.5)
                 / (1 + self.failures[arm] + self.successes[arm])
             )
-            + t
-            + rand
+            + ((avrg / m+1))/5 if len(self.times[arm]) >= 2 else 0 
         )
-    def update(self, state, reward):
+    def update(self, state, reward, student_stat):
         self.q_table[state] = 1 + self.alpha * (
             reward + self.gamma * np.max(self.q_table[:]) - self.q_table[state]
         )
-        self.update_student(self.q_table)
-        self.print_q_table()
-    def print_q_table(self):
+        self.std.update_questions_reward(self.q_table, student_stat)
+    def print_q_table(self,state= None):
+        if state != None:
+            print(f"{state}")
+
         for q in self.q_table:
-            print(q, end=" - ")
+            print(f"{q:.2f}", end=" - ")
 
         print("\n")

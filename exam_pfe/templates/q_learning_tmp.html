@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title_content %}
-    Thompson Sampler
+    Q_LEARNING
 {% endblock title_content %}
 
 {% block styles_content %}
@@ -16,20 +16,31 @@
    
     <div class="container">
         <h1>Thompson Sampler</h1>
-        <div id="timer">00:00.000</div>
-        <div class="c-timer">
-            <button id="stop">Stop</button>
-            <button id="play">Play</button>
+        <div class="timer">
+            <div id="timer">00:00.000</div>
+            <div id="control">
+                <svg id="control" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 512 512" xml:space="preserve">
+                    <path d="M256,0C114.617,0,0,114.615,0,256s114.617,256,256,256s256-114.615,256-256S397.383,0,256,0z M224,320
+                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z M352,320
+                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z" fill = " #b00000"/>
+                </svg>
+            </div>
         </div>
+    </div>
+       
 
-        <form method="POST" >
+        <form class= 'form' method="POST" >
                 {% csrf_token %}
             <p class="question">{{ question }}</p>
-            
-            {% for chose in possible_choses %}
-            <input type="checkbox" id={{chose.value|concat:"chose"}} name="answer[]" value={{chose.value}}>
-            <label for={{chose.value|concat:"chose"}}>{{chose.text}}</label><br>
-            {% endfor %}
+            <div class="choises">
+                {% for chose in possible_choses %}
+                <div class="chois">
+                    <input type="checkbox" id={{chose.value|concat:"chose"}} name="answer[]" value={{chose.value}}>
+                    <label for={{chose.value|concat:"chose"}}>{{chose.text}}</label><br>
+                </div>
+                {% endfor %}
+            </div>
             <input type="hidden" name="arm" value="{{ arm }}">
             <input type="hidden" id="time" name="time">
             <input type="submit" id="submit" value="Submit">

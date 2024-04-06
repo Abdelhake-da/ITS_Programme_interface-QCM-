@@ -3,9 +3,8 @@ body {
 }
 
 .container {
-  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,20 +13,45 @@ body {
 h1 {
   text-align: center;
 }
-
+#control svg {
+    width: 20px;
+    height: 20px;
+    fill: black;
+}
 .question {
-  padding: 20px;
-  font-size: 1.3rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  /* font-weight: bold; */
   border: 1px solid #ddd;
   border-radius: 4px;
+  width: 90%;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin: 0 auto;
+}
+
+.choises{
+    padding: 10px;
+    margin: 0 auto;
+   
+}
+.timer {
+    display: flex;
+    align-items: center;
+}
+.chois:last-child {
+    margin-bottom: 7px;
+}
+.chois {
+    margin-bottom: 5px;
 }
 
 input[type="number"],
@@ -44,19 +68,21 @@ input[type="number"] {
 }
 
 #timer {
-  font-size: 1.4rem;
-  margin: 10px 10px;
-  font-weight: bold;
+  font-size: 1rem;
 }
 
-.c-timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.c-timer button {
+#control{
   margin: 0 10px;
+  
+      border: none;
+    background: none;
+}
+
+#control:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+
 }
 
 input[type="submit"],

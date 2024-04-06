@@ -69,6 +69,7 @@ class Student_Course_Reward(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     questions_reward = models.JSONField(default=list, blank=True)
+    student_stat = models.JSONField(default=dict, blank=True)
     
     def __str__(self):
         return f"{str(self.student)}_{str(self.course)}"

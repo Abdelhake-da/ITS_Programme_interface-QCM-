@@ -20,8 +20,7 @@ from app import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.index, name="index"),
-    path("home", views.home, name="home"),
+    path("", views.home, name="index"),
     path(
         "module/<str:module_name>/courses/<str:course_name>",
         views.prepare_exam_q_learning,
