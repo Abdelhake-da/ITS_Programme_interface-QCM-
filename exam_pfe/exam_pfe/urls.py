@@ -23,7 +23,7 @@ urlpatterns = [
     path("", views.home, name="index"),
     path(
         "module/<str:module_name>/courses/<str:course_name>",
-        views.prepare_exam_q_learning,
+        views.prepare_exam,
         name="course",
     ),
     path(

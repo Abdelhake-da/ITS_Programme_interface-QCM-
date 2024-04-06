@@ -34,12 +34,15 @@
                 {% csrf_token %}
             <p class="question">{{ question }}</p>
             <div class="choises">
-                {% for chose in possible_choses %}
-                <div class="chois">
-                    <input type="checkbox" id={{chose.value|concat:"chose"}} name="answer[]" value={{chose.value}}>
-                    <label for={{chose.value|concat:"chose"}}>{{chose.text}}</label><br>
-                </div>
-                {% endfor %}
+                <ul>
+                    {% for chose in possible_choses %}
+                    <li class="chois">
+                        <input type="checkbox" id={{chose.value|concat:"chios"}} name="answer[]" value={{chose.value}}>
+                        <label for={{chose.value|concat:"chios"}} class="chios-item">{{chose.text}}</label><br>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
             </div>
             <input type="hidden" name="arm" value="{{ arm }}">
             <input type="hidden" id="time" name="time">
@@ -47,9 +50,22 @@
         </form>
         {% if feedback %}
             {% if feedback.0 == 0 %}
-        <p class="feedback-success">{{ feedback.1 }}</p>
+        <p class="feedback-success">{{ feedback.1.0}}</p>
         {% else %}
-        <p class="feedback-error">{{ feedback.1 }}</p>
+        <div class="wrong-answor">
+            <p class="feedback-error">{{ feedback.1.0 }}</p>
+            <div class="correct-answer">
+                <p>The correct answer is :</p>
+                <ul >
+                    {% for correct in feedback.1.1 %}
+                    <li>{{ correct }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        </div>
+        
+    
         {% endif %}
         {% endif %}
         <table>

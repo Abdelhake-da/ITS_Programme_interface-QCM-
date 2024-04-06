@@ -10,10 +10,13 @@ def is_correct(answer: list, correct_answer: list) -> bool :
     if len(answer) == len(correct_answer):
         return all(int(answer[i]) in correct_answer for i in range(len(answer)))
     return False
-def solution(question: dict)-> str:
-    strs:str = "Oops, your answer was incorrect. The correct answer is:"
-    for i in question["correct_answer"]:
-        strs += str(question["possible_choses"][int(i) - 1]["text"])
+def solution(question: dict) -> list:
+    strs:list = ["", []]
+    strs[0] = "Oops, your answer was incorrect."
+    strs[1] = [
+        str(question["possible_choses"][int(i) - 1]["text"])
+        for i in question["correct_answer"]
+    ]
     return strs
 def get_courses()-> dict:
     modules : list = list(Module.objects.filter())
@@ -176,33 +179,46 @@ def question_treatment(
     )
 
     feedback = (
-        [0, "You answered correctly!"]
+        [0, ["You answered correctly!"]]
         if success
         else [1, solution(questions[index_question])]
     )
     arm = sampler.select_action()
     question = questions[arm]["question"]
     possible_choses = questions[arm]["possible_choses"]
-    return{
-            "courses": get_courses(),
-            "question": question,
-            "possible_choses": random.sample(possible_choses, len(possible_choses)),
-            "arm": arm,
-            "feedback": feedback,
-            "results": get_feedback(sampler, questions),
-            "student": student.name,
-        }
+    return {
+        "courses": get_courses(),
+        "question": question,
+        "possible_choses": add_upper_alpha(
+            random.sample(possible_choses, len(possible_choses))
+        ),
+        "arm": arm,
+        "feedback": feedback,
+        "results": get_feedback(sampler, questions),
+        "student": student.name,
+    }
 def init_variables(module_name, course_name, std, type = "qcm", function = 1):
     questions = get_data_from_db(module_name, course_name,type)
     std.student_course_reward = Student_Course_Reward.objects.get_or_create(
         student=std.student, course=Course.objects.get(name=course_name)
     )[0]
-    
+
     sampler = Q_learning(questions,std) if function == 1 else ThompsonSampler(questions, std)
     arm = sampler.select_action()
     question = questions[arm]["question"]
     possible_choses = list(questions[arm]["possible_choses"])
     return questions,sampler,arm,question,possible_choses
+
+
+def add_upper_alpha(lis):
+    exist = lis[0]['text'][1] == '.'
+    for i, item in enumerate(lis, 0):
+        if exist:
+            item["text"] = f"{chr(i + 65)}. {item['text'][2:]}"
+        else:
+            item["text"] = f"{chr(i + 65)}. {item['text']}"
+    return lis
+
 
 """
 def get_data_from_db1(module, course, type):

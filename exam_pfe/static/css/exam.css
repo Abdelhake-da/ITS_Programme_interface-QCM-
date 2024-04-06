@@ -52,7 +52,9 @@ h1 {
 }
 .chois {
     margin-bottom: 5px;
+    /* list-style: upper-alpha; */
 }
+
 
 input[type="number"],
 input[type="submit"],
@@ -111,7 +113,10 @@ button {
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
+  height: 400px;
+  overflow: auto;
+  margin: 0 auto;
 }
 
 th,
@@ -127,4 +132,35 @@ th {
 
 tr:hover {
   background-color: #f5f5f5;
+}
+
+/* ------------------------------------------ */
+.wrong-answor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.correct-answer {
+    font-size: 1.2rem;
+}
+
+.correct-answer p {
+    font-weight: bold;
+    text-align: left;
+}
+
+.correct-answer ul li {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 40px;
+    padding-left: 5px;
+}
+
+.correct-answer ul li:last-child {
+    margin-bottom: 20px;
+}
+
+li.chois input {
+    margin-right: 10px;
 }

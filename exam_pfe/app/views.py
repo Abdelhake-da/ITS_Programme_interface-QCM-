@@ -33,8 +33,11 @@ def module(request, module_name):
 
 def courses(request, module_name, course_name):
     return render(request, "module.html")
+# add upper alpha before the  items of the list
 
-def prepare_exam_q_learning(request, module_name, course_name):
+
+
+def prepare_exam(request, module_name, course_name):
     global questions, sampler
     if request.method == "POST":
         index_question = int(request.POST.get("arm"))
@@ -54,7 +57,9 @@ def prepare_exam_q_learning(request, module_name, course_name):
         {
             "courses": get_courses(),
             "question": question,
-            "possible_choses": random.sample(possible_choses, len(possible_choses)),
+            "possible_choses": add_upper_alpha(
+                random.sample(possible_choses, len(possible_choses))
+            ),
             "arm": arm,
             "feedback": [0, ""],
             "results": get_feedback(sampler, questions),
@@ -69,70 +74,3 @@ def upload_json_file(request):
     ) as file:
         load_data_as_json(file)
     return HttpResponse("done")
-
-
-"""
-    def prepare_exam(request, module_name, course_name):
-    global questions, sampler
-    if request.method == "POST":
-        time_taken = float(request.POST.get("time"))
-        answer = request.POST.getlist("answer[]")
-        correct_answer = questions[int(request.POST.get("arm"))]["correct_answer"]
-        success = is_correct(answer, correct_answer)
-        sampler.update(int(request.POST.get("arm")), success, time_taken)
-
-        feedback = (
-            [0, "You answered correctly!"]
-            if success
-            else [1, solution(questions[int(request.POST.get("arm"))])]
-        )
-        arm = sampler.select_arm()
-        question = questions[arm]["question"]
-        possible_choses = questions[arm]["possible_choses"]
-        results = []
-        for i, q in enumerate(questions):
-            incorrect = sampler.failures[i]
-            correct = sampler.successes[i]
-            times = sampler.times[i]
-            total_time = sum(times)
-            avg_time = total_time / len(times) if times else 0
-
-            results.append(
-                {
-                    "question": q["question"],
-                    "correct": correct,
-                    "incorrect": incorrect,
-                    "max_time": max(times) if times else 0,
-                    "min_time": min(times) if times else 0,
-                    "average_time": avg_time,
-                }
-            )
-
-        return render(
-            request,
-            "index_copy copy.html",
-            {
-                "courses": get_courses(),
-                "question": question,
-                "possible_choses": random.sample(possible_choses, len(possible_choses)),
-                "arm": arm,
-                "feedback": feedback,
-                "results": results,
-            },
-        )
-    questions, sampler, arm, question, possible_choses = init_variables(
-        module_name, course_name, std.student
-    )
-    return render(
-        request,
-        "index_copy copy.html",
-        {
-            "courses": get_courses(),
-            "question": question,
-            "possible_choses": random.sample(possible_choses, len(possible_choses)),
-            "arm": arm,
-            "feedback": [0, ""],
-        },
-    )
-
-"""
