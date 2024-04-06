@@ -26,7 +26,10 @@ def home(request):
     )
 
 def module(request, module_name):
-    return render(request, "module.html")
+    print(get_courses())
+    return render(
+        request, "module.html", {"courses": get_courses(), "student": std.student.name ,"module_name":module_name}
+    )
 
 def courses(request, module_name, course_name):
     return render(request, "module.html")

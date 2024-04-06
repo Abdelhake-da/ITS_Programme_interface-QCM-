@@ -2,13 +2,7 @@
         <h1 class="title">moduls</h1>
         <ul class="items">
           {% for key,val in courses.items %}
-           <li class="item"><a href="{% url 'module' module_name=key %}"><span>{{key}} ></a></span>
-            <ul class="subitems">
-              {% for va in val %}
-                <li class="subitem"><a href="{% url 'course' module_name=key course_name=va %}">{{va}}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
+           <li class="module_link"><a href="{% url 'module' module_name=key %}"><span>{{key}}</a></span></li>
           {% endfor %}
         </ul>
       </div>

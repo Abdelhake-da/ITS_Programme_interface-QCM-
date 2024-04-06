@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title_content %}
-    MODUL
+    {{module_name}}
 {% endblock title_content %}
 
 {% block styles_content %}
@@ -13,7 +13,13 @@
 
 {% endblock left_side_content %}
 {% block body_conten %}
-   <h1>welcome to my revision web site</h1>
+   <h1>{{module_name}}</h1>
+   <ul class="cours-items">
+        {% for va in courses|get_item:module_name %}
+        <li class="cours-link"><a href="{% url 'course' module_name=module_name course_name=va %}"><p>{{va}}</p></a></li>
+        {% endfor %}
+    </ul>
+    
 {% endblock body_conten %}
 
 {% block scripts_content %}

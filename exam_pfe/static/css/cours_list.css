@@ -3,6 +3,61 @@
     height: 100vh;
     width: 100vw;
 }
+li.module_link {
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    list-style: inside;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+li.module_link:hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+}
+
+li.cours-link {
+    list-style: auto;
+    text-align: left;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    margin: 0px 30px 10px 20px;
+}
+
+ul.cours-items {
+    margin-top: 25px;
+    padding-left: 20px;
+    width: 60%;
+}
+
+li.cours-link:hover {
+    transform: scale(1.04);
+}
+li.cours-link a p {
+    text-align: justify;
+    text-transform: capitalize;
+}
+
+.exam h1 {
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 1.2px
+}
+
+.user {
+    padding: 10px 0;
+    text-transform: capitalize;
+    letter-spacing: 1.2px;
+}
+
+
+
+
+
+
+
 .moduls{
     width: 300px;   
     display: flex;
