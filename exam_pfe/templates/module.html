@@ -13,12 +13,33 @@
 
 {% endblock left_side_content %}
 {% block body_conten %}
-   <h1>{{module_name}}</h1>
-   <ul class="cours-items">
-        {% for va in courses|get_item:module_name %}
-        <li class="cours-link"><a href="{% url 'course' module_name=module_name course_name=va %}"><p>{{va}}</p></a></li>
-        {% endfor %}
-    </ul>
+<h1>{{module_name}}</h1>
+<form action="">
+    <div class="courses">
+        <ul class="cours-items">
+            {% for va in courses|get_item:module_name %}
+            <li class="cours-link"><a href="{% url 'course' module_name=module_name course_name=va %}" nb-questions = {{module_name|get_questions_len:va}}><p>{{va}}</p></a></li>
+            
+            {% endfor %}
+        </ul>
+        <div class="do-exam">
+            {% csrf_token %}
+            <div class="nb-questions-div">
+                
+                <div class="type-quest">
+                    <input type="checkbox" name="qcm" id="qcm" >
+                    <label class="type-quest-check" for="type-quest-check-qcm">QCM</label>
+                    <input type="checkbox" name="qcm" id="owa" >
+                    <label class="type-quest-check" for="type-quest-check-owa">OWA</label>
+                </div>
+                <input type="number" name="nb_questions" id="nb_questions">
+                <p>max number is 10</p>
+            </div>
+            <input type="submit" value="DO EXAM">
+        </div>
+    </div>
+</form>
+   
     
 {% endblock body_conten %}
 

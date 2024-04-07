@@ -30,7 +30,7 @@ def get_data_from_db(module, course, type) -> list:
     module_model : Module = Module.objects.get(name=module)
     course_model : Course = Course.objects.get(name=course, module=module_model)
     questions : Question = Question.objects.get(course=course_model, question_type=type)
-
+    
     questions_list : list = []
     for question in json.loads(questions.question):
         question_text = question["question"]
@@ -45,7 +45,7 @@ def get_data_from_db(module, course, type) -> list:
         )
 
     return questions_list
-def get_feedback(sampler, questions):
+def get_stats(sampler, questions):
     results = []
     for i, q in enumerate(questions):
         incorrect = sampler.failures[i]
@@ -109,35 +109,6 @@ def load_data(file):
                     question_type="qcm",
                     question=json.dumps(questions),
                 )
-                # for question in questions:
-                #     qcm_txt = question["question"]
-                #     question_model = Question.objects.get_or_create(
-                #         text=qcm_txt,
-                #         course=course_model[0],
-                #         question_type="qcm",
-                #     )
-                #     qcm_choices = question["choices"]
-                #     for choice in qcm_choices:
-                #         choice_text = choice["text"]
-                #         choice_value = int(choice["value"])
-                #         PossibleChoice.objects.get_or_create(
-                #             choice_text=choice_text,
-                #             choice_value=choice_value,
-                #             question=question_model[0],
-                #         )
-                #     qcm_answers = question["answers"]
-                #     for answer in qcm_answers:
-                #         try:
-                #             CorrectAnswer.objects.get_or_create(
-                #                 answer_value=answer, question=question_model[0]
-                #             )
-                #         except:
-                #             print(
-                #                 CorrectAnswer.objects.filter(
-                #                     question=question_model[0], answer_value=answer
-                #                 )
-                #             )
-
             if len(course["type"]["not qcm"]) > 1:
                 questions = course["type"]["not qcm"]
                 Question.objects.get_or_create(
@@ -145,19 +116,18 @@ def load_data(file):
                     question_type="one_word",
                     question=json.dumps(questions),
                 )
-                # for question in questions:
-                #     not_qcm_txt = question["question"]
-                #     not_qcm_answers = question["answers"]
-                #     question_model = Question.objects.get_or_create(
-                #         text=not_qcm_txt,
-                #         course=course_model[0],
-                #         question_type="one_word",
-                #     )
-                #     CorrectAnswer.objects.get_or_create(
-                #         answer_value=not_qcm_answers, question=question_model[0]
-                #     )
+
+
+def get_feedback(index_question, questions, answer):
+    return (
+        [0, ["You answered correctly!"]]
+        if is_correct(answer, questions[index_question]["correct_answer"])
+        else [1, solution(questions[index_question])]
+    )
+
+
 def question_treatment(
-    answer, questions, index_question, time_taken, sampler, student
+    answer, questions, index_question, time_taken, sampler
 ):
     time = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     success = is_correct(answer, questions[index_question]["correct_answer"])
@@ -178,11 +148,8 @@ def question_treatment(
         dict_questions,
     )
 
-    feedback = (
-        [0, ["You answered correctly!"]]
-        if success
-        else [1, solution(questions[index_question])]
-    )
+
+def get_context(sampler, questions, student):
     arm = sampler.select_action()
     question = questions[arm]["question"]
     possible_choses = questions[arm]["possible_choses"]
@@ -193,10 +160,14 @@ def question_treatment(
             random.sample(possible_choses, len(possible_choses))
         ),
         "arm": arm,
-        "feedback": feedback,
-        "results": get_feedback(sampler, questions),
+        "feedback": [0, ""],
+        "results": get_stats(sampler, questions),
         "student": student.name,
+        "state": True,
+        "answer": [],
     }
+
+
 def init_variables(module_name, course_name, std, type = "qcm", function = 1):
     questions = get_data_from_db(module_name, course_name,type)
     std.student_course_reward = Student_Course_Reward.objects.get_or_create(
@@ -211,34 +182,10 @@ def init_variables(module_name, course_name, std, type = "qcm", function = 1):
 
 
 def add_upper_alpha(lis):
-    exist = lis[0]['text'][1] == '.'
+    exist = lis[0]['text'][1] == '.' if len(lis[0]['text']) > 2 else False
     for i, item in enumerate(lis, 0):
         if exist:
             item["text"] = f"{chr(i + 65)}. {item['text'][2:]}"
         else:
             item["text"] = f"{chr(i + 65)}. {item['text']}"
     return lis
-
-
-"""
-def get_data_from_db1(module, course, type):
-    module_model = Module.objects.get(name=module)
-    course_model = Course.objects.get(name=course, module=module_model)
-    questions = Question.objects.get(course=course_model, question_type=type)
-    return [
-        {
-            "question": question.text,
-            "possible_choses": list(
-                PossibleChoice.objects.filter(question=question).values_list(
-                    "choice_text", "choice_value"
-                ),
-            ),
-            "correct_answer": list(
-                CorrectAnswer.objects.filter(question=question).values_list(
-                    "answer_value", flat=True
-                )
-            ),
-        }
-        for question in questions
-    ]
-"""

@@ -27,9 +27,11 @@ li.cours-link {
 }
 
 ul.cours-items {
+    height: 85%;
     margin-top: 25px;
     padding-left: 20px;
     width: 60%;
+    overflow-y: auto;
 }
 
 li.cours-link:hover {

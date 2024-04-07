@@ -27,7 +27,6 @@ class Q_learning:
     def select_action(self):
         chose_rand = False
         calc = int((self.randomNum * len(self.q_table) )/ 100)+1
-        print(calc," -- == == -- == --", self.index)
         if self.index % calc == 0:
             chose_rand = True
             self.randomNum = random.randint(1, 100)

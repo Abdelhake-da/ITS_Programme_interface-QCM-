@@ -46,13 +46,15 @@ class Student_class:
         return successes,failures,times
     def update_questions_reward(self, tbl, stat = {}):
         try:
-            self.student.questions_reward = json.dumps(tbl)
+            self.student_course_reward.questions_reward = json.dumps(tbl)
         except:
             pass
         if stat != {}:
             if str(stat["key"]) not in self.student_course_reward.student_stat:
                 self.student_course_reward.student_stat[str(stat["key"])] = []
             self.student_course_reward.student_stat[str(stat["key"])].append(stat["value"])
+        print(tbl)
+
         self.student_course_reward.save()
     def create_student(self,student_id, user_name, password, name):
         Student.objects.create(student_id = student_id, user_name = user_name,password = password, name = name)
