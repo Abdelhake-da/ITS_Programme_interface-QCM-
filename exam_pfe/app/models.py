@@ -1,75 +1,74 @@
+import random
 from django.db import models
+from shortuuid.django_fields import ShortUUIDField
 
 
 class Module(models.Model):
+    id = ShortUUIDField(
+        unique=True, length=15, max_length=30, prefix="mod-", alphabet="abcdefgh12345",primary_key=True
+    )
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+    def get_module(self):
+        return {"id": self.id, "name": self.name}
 
 
 class Course(models.Model):
+    id = ShortUUIDField(
+        unique=True,
+        length=15,
+        max_length=30,
+        prefix="crs-",
+        alphabet="abcdefgh12345",
+        primary_key=True,
+    )
     module = models.ForeignKey(Module, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+    def get_course(self):
+        return {
+            'id':self.id,
+            'name':self.name,
+            'module':self.module
+        }
+
 
 class Question(models.Model):
-    COURSE_QUESTION_TYPES = (
-        ("qcm", "Multiple Choice"),
-        ("one_word", "One Word Response"),
+    id = ShortUUIDField(
+        unique=True,
+        length=15,
+        max_length=30,
+        prefix="qst-",
+        alphabet="abcdefgh12345",
+        primary_key=True,
     )
-
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    question_type = models.CharField(max_length=10, choices=COURSE_QUESTION_TYPES)
-    # text = models.TextField()
-    question = models.JSONField(default=list, blank=True)
+    qst_text = models.TextField()
+    qst_choices = models.TextField()
+    qst_correct_answer = models.TextField()
 
     def __str__(self):
-        return f"{self.course.name} - {self.question_type}"
-
-
-class CourseFile(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    file = models.FileField(upload_to="course_files/")
-
-    def __str__(self):
-        return str(self.file)
-
-
-class PossibleChoice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    choice_value = models.IntegerField()
-
-    def __str__(self):
-        return self.choice_text
-
-
-class CorrectAnswer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer_value = models.CharField(max_length=90)
-
-    def __str__(self):
-        return str(self.answer_value)
-
-
-class Student(models.Model):
-    student_id = models.IntegerField()
-    user_name = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
-class Student_Course_Reward(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    questions_reward = models.JSONField(default=list, blank=True)
-    student_stat = models.JSONField(default=dict, blank=True)
-    
-    def __str__(self):
-        return f"{str(self.student)}_{str(self.course)}"
+        return f"{self.qst_text}"
+    def get_choices(self):
+        return [ (index, choice) for index, choice in enumerate(self.qst_choices.replace("\r","").split('\n'))]
+    def get_correct_answer(self):
+        return self.qst_correct_answer.replace("\r", "").split("\n")
+    def get_question(self):
+        choices = self.get_choices()
+        random.shuffle(choices)
+        return {
+            "id": self.id,
+            "qst_text": self.qst_text,
+            "qst_choices": choices,
+            "qst_correct_answer": self.get_correct_answer(),
+            "course": self.course.get_course(),
+        }
+    def update_questions(self, course, qst_text, qst_choices, qst_correct_answer):
+        self.course = course
+        self.qst_text = qst_text
+        self.qst_choices = qst_choices
+        self.qst_correct_answer = qst_correct_answer

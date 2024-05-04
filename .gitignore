@@ -1,3 +1,2 @@
 env/
-.vscode/
-Rapport.docx
+__pycache__/

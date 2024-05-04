@@ -1,0 +1,45 @@
+.cours-items div {
+    margin-bottom: 20px;
+    display: flex;
+
+}
+
+.cours-items div label p {
+    text-transform: capitalize;
+    display: inline;
+
+}
+.cours-items div label {
+  margin-left: 15px;
+}
+.cours-items {width: 50%;}
+.courses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exam{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+input[type="number"],
+input[type="submit"],
+button {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+input[type="number"] {
+  font-size: 1.2rem;
+}
+input[type="submit"],
+button {
+  background-color: rgb(111, 233, 216);
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

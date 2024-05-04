@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "shortuuid"
+    ],
+    "docwriter.progress.trackFunctions": false,
+    "docwriter.progress.trackMethods": true,
+    "docwriter.progress.trackTypes": false,
+    "docwriter.progress.trackClasses": true,
+    "cSpell.enableFiletypes": [
+        "html",
+        "ignore"
+    ]
+}

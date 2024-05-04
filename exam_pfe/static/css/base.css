@@ -2,7 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
     list-style: none;
-    color: black
+    text-decoration: none;
+    color: black;
+}
+
+.hidden{
+    display:  none;
+}
+.disabled {
+    pointer-events: none; /* Disable mouse events */
+    opacity: 0.5; /* Apply a visual effect to indicate disabled state */
 }

@@ -1,0 +1,162 @@
+{% load custom_filters %}
+
+<div class="hidden" id="num_q">{{all_questions_num}}</div>
+<div class="exam">
+    {% if response %}
+        <form class="form" action="{% url 'exam:result' %}" method="POST">
+            {% csrf_token %}
+            {% for question in questions %}
+            {% if question.0|add_one == 1 %}
+                <div id={{question.0|set_id_question}} class="question-div">
+                    <h1> {{question.0|add_one}} / {{all_questions_num}}</h1>
+                    <div class="container">
+                        <div class="timer">
+                            <div class="timer-class" id="timer">00:00.000</div>
+                        </div>
+                    </div>
+                    <p class="question">{{question.1.qst_text}}</p>
+                    <div class="choises">
+                        <ul>
+
+                            {% for choice in question.1.qst_choices %}
+                            <li class="chois">
+                                <label class="check-container">{{choice.1}}
+                                    <input type="checkbox" id={{question.0|set_id:choice.0}} name="{{question.0|add_num_to_answers}}" value="{{choice.0}}"  {% if answers|append:question.0|is_in_answers:choice.0 %}checked{% endif %} disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <input type="hidden" class="time" name="time[]">
+                    <div class=" btn-control">
+                    <div class= 'btn'  disabled onclick="previous({{question.0}})">Previous</div>
+                    <div  class= 'btn' onclick="next({{question.0}})" >Next</div>
+                </div>
+                </div>
+                
+            {% else %}
+                <div id={{question.0|set_id_question}} class="question-div  hidden">
+                    <h1> {{question.0|add_one}} / {{all_questions_num}}</h1>
+                    <div class="container">
+                        <div class="timer">
+                            <div class="timer-class" id="timer">00:00.000</div>
+                            
+                        </div>
+                    </div>
+                    <p class="question">{{question.1.qst_text}}</p>
+                    <div class="choises">
+                        <ul>
+                            {% for choice in question.1.qst_choices %}
+                            <li class="chois">
+                                
+                                <label class="check-container">{{choice.1}}
+                                    <input type="checkbox" id={{question.0|set_id:choice.0}} name="{{question.0|add_num_to_answers}}" value="{{choice.0}}"  {% if answers|append:question.0|is_in_answers:choice.0 %}checked{% endif %} disabled>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <input type="hidden" class="time" name="time[]">
+                    <div class=" btn-control" >
+                    <div class= 'btn'  onclick="previous({{question.0}})">Previous</div>
+                    {% if question.0|add_one == all_questions_num %}
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                    {% else %}
+                    <div class= 'btn'  onclick="next({{question.0}})" >Next</div>
+                    {% endif %}
+                </div>
+                </div>
+                
+            {% endif %}
+            
+            {% endfor %}
+        </form>
+    {% else %}
+        <form class="form" action="{% url 'exam:result' %}" method="POST">
+            {% csrf_token %}
+            {% for question in questions %}
+            {% if question.0|add_one == 1 %}
+                <div id={{question.0|set_id_question}} class="question-div">
+                    <h1> {{question.0|add_one}} / {{all_questions_num}}</h1>
+                    <div class="container">
+                        <div class="timer">
+                            <div class="timer-class" id="timer">00:00.000</div>
+                            <div class="control" id= 'control' onclick = "toggle_str_pause()">
+                                <svg  height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                    viewBox="0 0 512 512" xml:space="preserve">
+                                    <path d="M256,0C114.617,0,0,114.615,0,256s114.617,256,256,256s256-114.615,256-256S397.383,0,256,0z M224,320
+                                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z M352,320
+                                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z" fill = " #b00000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="question">{{question.1.qst_text}}</p>
+                    <div class="choises">
+                        <ul>
+                            {% for choice in question.1.qst_choices %}
+                            <li class="chois">
+                                <label class="check-container">{{choice.1}}
+                                    <input type="checkbox" id={{question.0|set_id:choice.0}} name="{{question.0|add_num_to_answers}}" value="{{choice.0}}">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <input type="hidden" class="time" name="time[]">
+                    <div class=" btn-control">
+                    <div class= 'btn'  disabled onclick="previous({{question.0}})">Previous</div>
+                    <div  class= 'btn' onclick="next({{question.0}})" >Next</div>
+                </div>
+                </div>
+                
+            {% else %}
+                <div id={{question.0|set_id_question}} class="question-div  hidden">
+                    <h1> {{question.0|add_one}} / {{all_questions_num}}</h1>
+                    <div class="container">
+                        <div class="timer">
+                            <div class="timer-class" id="timer">00:00.000</div>
+                            <div class="control" id= 'control' onclick = "toggle_str_pause()">
+                                <svg  height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                    viewBox="0 0 512 512" xml:space="preserve">
+                                    <path d="M256,0C114.617,0,0,114.615,0,256s114.617,256,256,256s256-114.615,256-256S397.383,0,256,0z M224,320
+                                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z M352,320
+                                        c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z" fill = " #b00000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="question">{{question.1.qst_text}}</p>
+                    <div class="choises">
+                        <ul>
+                            {% for choice in question.1.qst_choices %}
+                            <li class="chois">
+                                <label class="check-container">{{choice.1}}
+                                    <input type="checkbox" id={{question.0|set_id:choice.0}} name="{{question.0|add_num_to_answers}}" value="{{choice.0}}">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <input type="hidden" class="time" name="time[]">
+                    <div class=" btn-control" >
+                    <div class= 'btn'  onclick="previous({{question.0}})">Previous</div>
+                    {% if question.0|add_one == all_questions_num %}
+                    <input type="submit" id="submit" name="submit" value="Submit">
+                    {% else %}
+                    <div class= 'btn'  onclick="next({{question.0}})" >Next</div>
+                    {% endif %}
+                </div>
+                </div>
+                
+            {% endif %}
+            
+            {% endfor %}
+        </form>
+    {% endif %}
+    
+</div>

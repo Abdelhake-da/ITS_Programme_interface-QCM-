@@ -1,0 +1,88 @@
+.nav-bar {
+    padding: 10px 7%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+    margin-bottom: 10px;
+}
+
+.nav-bar .logo h1 {
+    font-size: 1.3rem;
+}
+
+.nav-bar .nav-list {
+    max-width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-bar .nav-list .nav-item {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+    border-radius: 10px;
+    padding: 3px 7px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.nav-bar .nav-list .nav-item:hover {
+    transform: scale(1.1);
+}
+
+.nav-bar .nav-list .nav-item:not(:first-child) {
+    margin-left: 20px;
+}
+
+.user {
+    position: relative;
+}
+
+.user .dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.user .dropdown .dropdown-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.user .dropdown .dropdown-list .dropdown-item {
+    text-align: center;
+    padding: 7px 14px;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user .dropdown .dropdown-list .dropdown-item:first-child {
+    border-radius: 8px 8px 0px 0px;
+}
+
+.user .dropdown .dropdown-list .dropdown-item:last-child {
+    border-radius: 0px 0px 8px 8px;
+}
+
+.user .dropdown .dropdown-list .dropdown-item:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.user .dropdown .dropdown-list .dropdown-item:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.2);
+    border: 1px solid black;
+}
+
+.user .dropdown .dropdown-list .dropdown-item a {
+    width: 100%;
+}
+

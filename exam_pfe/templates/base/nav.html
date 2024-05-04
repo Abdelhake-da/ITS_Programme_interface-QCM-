@@ -1,0 +1,45 @@
+<div class="nav-bar">
+        <div class="logo">
+            <h1>ESP EDUCATION</h1>
+        </div>
+        <ul class="nav-list">
+            {% if user.is_authenticated %}
+            {% if modules%}
+            <li class="user nav-item" onclick="showDropdown(this) ">
+                <div>
+                    <a>prepar exam</a>
+                </div>
+                <div class="dropdown hidden">
+                    <ul class="dropdown-list">
+                        {% for module in modules %}
+                            <li class="dropdown-item"><a href="{% url 'exam:prepare-exam' module.id %}">{{module.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+            </li>
+            {% endif %}
+            
+            <li id="user" class="user nav-item" onclick="showDropdown(this)">
+                <div>
+                    <a>{{user}}</a>
+                </div>
+                <div class="dropdown hidden">
+                    <ul class="dropdown-list">
+                        <li class="dropdown-item"><a href="#">profile</a></li>
+                        <li class="dropdown-item"><a href="{% url 'student:logout' %}">logout</a></li>
+                    </ul>
+                </div>
+                
+            </li>
+            {% else %}
+            <li  class="nav-item">
+                <a href="{% url 'student:login' %}">login</a>
+            </li>
+            <li  class="nav-item">
+                <a href="{% url 'student:signup' %}">register</a>
+            </li>
+            {% endif %}
+            
+        </ul>
+    </div>

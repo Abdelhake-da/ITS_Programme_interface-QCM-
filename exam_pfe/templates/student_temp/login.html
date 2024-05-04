@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}
+    Student Login
+{% endblock title %}
+{% block content %}
+    {% for msg in messages %}
+        <h1>{{msg}}</h1>
+    {% endfor %}
+    <form action="" method="post"> 
+        {% csrf_token %}
+        <label for="username"> username </label>
+        <input id="username" type="text" name="username" placeholder="username">
+        <label for="password"> password </label>
+        <input id="password" type="password" name="password1" placeholder="password">
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}

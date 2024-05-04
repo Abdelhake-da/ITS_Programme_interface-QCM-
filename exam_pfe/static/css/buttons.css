@@ -1,0 +1,24 @@
+.btn{
+    padding: 0px 10px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+.btn-exit{
+    color: red;
+    border-color: red;
+    padding: 0 5px;
+    position: relative;
+    left: 90%;
+    margin-bottom: 10px;
+}
+.btn-exit:hover{
+    background-color: red;
+    color: white;
+}

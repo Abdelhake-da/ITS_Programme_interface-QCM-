@@ -1,8 +1,0 @@
-<div class="moduls">
-        <h1 class="title">moduls</h1>
-        <ul class="items">
-          {% for key,val in courses.items %}
-           <li class="module_link"><a href="{% url 'module' module_name=key %}"><span>{{key}}</a></span></li>
-          {% endfor %}
-        </ul>
-      </div>

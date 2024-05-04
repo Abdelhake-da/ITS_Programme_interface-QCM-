@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}
+    MODULES
+{% endblock title %}
+{% block content %}
+<div class="modules" id="modules">
+    <h1>MODULE</h1>
+    <div class="btn btn-add" onclick="showAddForm()">
+        <p>ADD +</p>
+    </div>
+    <ul>
+        {% for module in modules %}
+        <li><a href="#"> {{module.name}} </a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="add-form hidden" id="add-form">
+    <div class="btn btn-exit" onclick="hidden_form()"><p>X</p></div>
+    <form action="{% url 'app:add-module' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" id="" />
+    </form>
+</div>
+{% endblock %}

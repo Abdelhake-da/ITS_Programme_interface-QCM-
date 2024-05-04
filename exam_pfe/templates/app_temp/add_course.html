@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}
+    COURSES
+{% endblock title %}
+{% block content %}
+<div class="form_container" id="form_container">
+    <h1>COURSE</h1>
+    <div class="btn btn-add" onclick="showAddForm()">
+        <p>ADD +</p>
+    </div>
+    <ul>
+        {% for course in courses %}
+        <li><a href="#"> {{course.name}} </a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="add-form hidden" id="add-form">
+    <div class="btn btn-exit" onclick="hidden_form()"><p>X</p></div>
+    <form action="{% url 'app:add-course' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" id="" />
+    </form>
+</div>
+{% endblock %}

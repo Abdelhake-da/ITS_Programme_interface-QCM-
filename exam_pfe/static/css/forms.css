@@ -1,0 +1,38 @@
+div.add-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+div.add-form {
+    border: 1px solid;
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 0);
+    border-radius: 5px;
+}
+
+.check {
+    margin: 0 10px;
+}
+
+.choice-item {
+    display: flex;
+    align-self: center;
+    width: 100%;
+}
+#choices{
+    display: flex;
+    flex-direction: column;
+    
+}
+.choice-list{
+    display: flex;
+}
+.choice-list p{
+    margin-right: 10px;
+}

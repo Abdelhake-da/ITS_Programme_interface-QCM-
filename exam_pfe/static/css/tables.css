@@ -1,0 +1,57 @@
+table#questionsTable {
+    /* border: 1px solid; */
+    /* padding: 5px 10px; */
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+
+th {
+    border-radius: 10px;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: 1px solid;
+}
+
+td {
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #b9b9b9;
+}
+tbody tr:nth-child(odd){
+    background-color: rgb(221, 216, 216);
+}
+tbody tr:hover{
+    background-color: rgb(164, 169, 173);
+}
+.course {
+    width: 15%;
+    text-align: center;
+}
+
+.question {
+    width: 35%;
+}
+
+.choices {
+    width: 35%;
+}
+
+.correctAnswer {
+    width: 5%;
+    text-align: center;
+}
+
+.edit {
+    width: 5%;
+    text-align: center;
+}
+
+.delete {
+    width: 5%;
+    text-align: center;
+}

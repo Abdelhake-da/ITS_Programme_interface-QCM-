@@ -1,0 +1,35 @@
+{% load custom_filters %}
+<div class="exam">
+
+    <h1>{{module.name}}</h1>
+    <form id="examForm" action="{% url 'exam:do-exam' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="start" value="True">
+        <input type="hidden" name='id' value={%generate_unique_id%}>
+        <div class="courses">
+            <div class="cours-items">
+                {% for course in courses %}
+                <div>
+                    <input type="checkbox" name="courses[]" id="{{course.1.id}}" nb_ques={{course.0|get_num:questions}}
+                        value="{{course.1.id}}" onchange="get_max_num(this)">
+                    <label class="type-quest-check" for="{{course.1.id}}">
+                        <p>{{course.1.name}}</p>
+                    </label>
+                </div>
+                {% endfor %}
+                
+
+            </div>
+            <div class="do-exam">
+
+                <div class="nb-questions-div">
+                    <input type="number" name="nb_questions" id="nb_questions" max="0" value="0" min="0">
+                    <p>max number is <span id="max_questions">0</span></p>
+                </div>
+                <input type="submit" value="DO EXAM">
+            </div>
+        </div>
+    </form>
+
+
+</div>

@@ -1,0 +1,79 @@
+{% extends "base/base.html" %}
+{% load custom_filters %}
+{% load static %}
+{% block title %}
+    Questions
+{% endblock title %}
+{% block styels %}
+<link rel="stylesheet" href="{% static 'css/tables.css' %}">
+{% endblock styels %}
+{% block content %}
+<div class="form_container" id="form_container">
+    <h1>Question</h1>
+    <div class="btn btn-add" onclick="showAddForm()">
+        <p>ADD +</p>
+    </div>
+   <table id="questionsTable">
+            <thead>
+                <tr>
+                    <th class = "course">Course</th>
+                    <th class = "question">Question Text</th>
+                    <th class = "choices">Choices</th>
+                    <th class = "correctAnswer">Correct Answer</th>
+                    <th class = "edit">edit</th>
+                    <th class = "delete">delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                <tr>
+                    <td class = "course" course_id="{{question.course.id}}"> {{question.course.name}} </td>
+                    <td class = "question" question_id="{{question.id}}"> {{question.qst_text}} </td>
+                    <td class = "choices">
+                        <ul>
+                            {% for choice in question.qst_choices %}
+                            <li>{{choice}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td class = "correctAnswer">
+                        <ul>
+                            {% for answer in question.qst_correct_answer %}
+                            <li>{{answer|add_one}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td class = "edit"> <div onclick='edit_question(this.parentElement)' class="btn"> edit</div> </td>
+                    <td class = "delete"><a href="{% url 'app:delete-question' question.id %}">delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+<div class="add-form hidden" id="add-form">
+    <div class="btn btn-exit" onclick="hidden_form()"><p>X</p></div>
+    <form action="{% url 'app:add-question' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="choice-item">
+            <div>
+                <input type="text" id="text-choice">
+            </div>
+            <div class="check">
+                <input type="checkbox" id="correct">
+                <label for="correct">correct</label>
+            </div>
+            <div class="btn" onclick="addChoice()">
+                <p>add</p>
+            </div>
+        </div>
+        <ul id="choices">
+            
+        </ul>
+        <input type="hidden" id="edit-hidden" value="add" name="type">
+        <input type="submit" name="" id="" />
+    </form>
+    <div id="add-choice-form hidden">
+    </div>
+</div>
+{% endblock %}
