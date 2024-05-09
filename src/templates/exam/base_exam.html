@@ -1,0 +1,18 @@
+{% extends "template_1/base.html" %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+    {% include "template_1/header.html" %}
+    <main>
+            <section class = 'prepare-exam'>
+                <div class="bb ze ki yn 2xl:ud-px-12.5">
+                    <div class="tc uf zo xf ap zf bp mq">
+                        {% block content_base_exam %}
+
+                        {% endblock content_base_exam %}
+                    </div>
+                </div>
+            </section>
+    </main>
+    {% include "template_1/footer.html" %}
+{% endblock content %}

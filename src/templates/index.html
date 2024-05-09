@@ -1,0 +1,25 @@
+{% extends "base/base_1.html" %}
+{% load custom_filters %}
+{% load static %}
+{% block title_1 %}
+Home
+{% endblock title_1 %}
+{% block styels_1 %}
+<link rel="stylesheet" href="{% static 'css/base/nav.css' %}">
+<link rel="stylesheet" href="{% static 'css/exam/prepare_exam.css' %}">
+<link rel="stylesheet" href="{% static 'css/exam/exam.css' %}">
+<link rel="stylesheet" href="{% static 'css/exam/check_box.css' %}">
+
+{% endblock styels_1 %}
+{% block content_1 %}
+{% include "base/nav.html" %}
+{% if courses %}
+{% include "exam/prepare_exam.html" %}
+{% endif %}
+{% if start or response %}
+{% include "exam/exam.html" %}
+{% endif %}
+<script src="{% static 'js/exam/exam.js' %}"></script>
+<script src="{% static 'js/exam/prepare_exam.js' %}"></script>
+<script src="{% static 'js/base/nav.js' %}"></script>
+{% endblock %}

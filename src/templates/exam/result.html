@@ -1,0 +1,114 @@
+{% extends "exam/base_exam.html" %}
+{% load custom_filters %}
+{% load static %}
+{% block title %}
+LogIn
+{% endblock title %}
+{% block style_link %}
+<link rel="stylesheet" href="{% static 'css/exam/exam.css' %}">
+<link href="{% static 'static2/prepar_exam.css' %}" rel="stylesheet">
+<link href="{% static 'static2/exam.css' %}" rel="stylesheet">
+<link href="{% static 'css/base/check_box.css' %}" rel="stylesheet">
+<link href="{% static 'static2/result.css' %}" rel="stylesheet">
+{% endblock style_link %}
+{% block content_base_exam %}
+    <div class="hidden" id="num_q">{{all_questions_num}}</div>
+    <div class="result-detail">
+        <div class="left">
+            <p>
+                <span class="sub-title">exam id :</span>
+                <span class="sub-content">{{id}} </span>
+            </p>
+            <p>
+                <span class="sub-title">module :</span>
+                <span class="sub-content">{{module}}</span>
+            </p>
+            <p>
+                <span class="sub-title">nb of correct answers :</span>
+                <span class="sub-content">{{nb_correct_answers}} / {{all_questions_num}}</span>
+            </p>
+        </div>
+        <div class="center">
+            
+            <h1>
+                <span class="note">{{note}}</span>
+                <span class="twenty">/20</span>
+            </h1>
+            
+        </div>
+        <div class="right">
+            <p>
+                <span class="sub-title">total time :</span>
+                <span class="sub-content">{{time_total|format_time}}</span>
+            </p>
+            <p>
+                <span class="sub-title">passed at :</span>
+                <span class="sub-content">{{time_passed}}</span>
+            </p>
+            <p>
+                <span class="sub-title">date :</span>
+                <span class="sub-content">{{date_passed}}</span>
+            </p>
+        </div>
+        
+    </div>
+    <h1>     </h1>
+    <form class="form" action="{% url 'exam:result' %}" method="POST">
+        {% csrf_token %}
+        {% with 0 as count_questions %}
+            {% for qst in questions %}
+                
+                {% get_question qst as question %}
+                {% with qst|get_value_from_dict:questions as values %}
+                    <div id={{qst}} class="question-div {% if count_questions > 0 %}hidden{% endif %}">
+                    <h1> {%increment count_questions%} / {{all_questions_num}}</h1>
+                    <div class="container">
+                        <div class="timer">
+                            <div class="timer-class" id="timer">{{values.1.1|format_time}} </div>
+                        </div>
+                    </div>
+                    <p class="question">{{question|get_qst_txt}}</p>
+                    <div class="choises">
+                        <ul>
+                            {% with 0 as count_choices %}
+                                {% with question|get_correct_p_answers:values.1.0 as vl %}
+                                    {% for choice in question|get_qst_choices %}
+                                    <li class="chois">
+                                        <label class="check-container">{{choice.1}}
+                                            <input type="checkbox" id={{count_questions|set_id:choice.0}} name="{{count_questions|add_num_to_answers}}" value="{{choice.0}}" 
+                                            {% with count_choices|check_box:vl as res %}
+                                            {% if res == 0 %}
+                                                checked disabled > <span class="checkmark correct"></span>
+                                            {% elif res == 1 %}
+                                                checked disabled > <span class="checkmark incorrect"></span>
+                                            {% elif res == 2 %}
+                                                checked disabled > <span class="checkmark mast-be"></span>
+                                            {% else %}
+                                                disabled > <span class="checkmark"></span>
+                                            {% endif %}
+                                            {% endwith %}
+                                        </label>
+                                    </li>
+                                    {% increment count_choices as count_choices %}
+                                    {% endfor %}
+                                {% endwith %}
+                            {% endwith %}
+                        </ul>
+                    </div> 
+                    <div class=" btn-control">
+                        <div class= 'btn'  disabled onclick="previous({{count_questions}})">Previous</div>
+                        <div  class= 'btn' onclick="next({{count_questions}})" >Next</div>
+                    </div>
+                </div>
+                {% endwith %}
+                
+                {% increment count_questions as count_questions %}
+            {% endfor %}
+        {% endwith %}
+        
+    </form>
+{% endblock content_base_exam %}
+{% block script_link %}
+<script src="{% static 'js/exam/next_previous.js' %}"></script>
+<script src="{% static 'js/exam/prepare_exam.js' %}"></script>
+{% endblock script_link %}

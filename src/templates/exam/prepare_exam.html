@@ -1,0 +1,60 @@
+{% extends "exam/base_exam.html" %}
+{% load custom_filters %}
+{% load static %}
+{% block title %}
+LogIn
+{% endblock title %}
+{% block style_link %}
+<link href="{% static 'static2/prepar_exam.css' %}" rel="stylesheet">
+<link href="{% static 'css/base/check_box1.css' %}" rel="stylesheet">
+
+{% endblock style_link %}
+{% block content_base_exam %}
+<div class="exam">
+    <h1>{{module.name}}</h1>
+   
+    <form id="examForm" action="{% url 'exam:do-exam' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="start" value="True">
+        <input type="hidden" name='id' value={%generate_unique_id%}>
+
+        <div class="courses">
+            <div class="courses-list">
+                {% for course in courses %}
+                <div class= 'course-item'>
+                    <label class="check-container">
+                        <img src="{% static 'static2/images/myImage/book.webp'%}" alt="">
+                    <div class="info">
+                        <h1>{{course.1.name}}</h1>
+                        <p><span class="sub-title b wm kk">number of document :</span><span class="value b wm kk">0</span></p>
+                        <p><span class="sub-title b wm kk">number of questions :</span><span class="value b wm kk">{{course.0|get_num:questions}}</span></p>
+                    </div>
+                        <input class="checkbox" type="checkbox" name="courses[]" id="{{course.1.id}}" nb_ques={{course.0|get_num:questions}}
+                        value="{{course.1.id}}" onchange="get_max_num(this)">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                {% endfor %}
+                
+
+            </div>
+            
+        </div>
+        <div>
+            <div class="do-exam">
+                <div>
+                    <input type="number" name="nb_questions" id="nb_questions" max="0" value="0" min="0">
+                <input type="submit" value="DO EXAM">
+                </div>
+                <p >max number is <span id="max_questions">0</span></p>
+            </div>
+        </div>
+        
+    </form>
+
+
+</div>
+{% endblock content_base_exam %}
+{% block script_link %}
+<script src="{% static 'js/exam/prepare_exam.js' %}"></script>
+{% endblock script_link %}

@@ -1,0 +1,67 @@
+
+{% extends "student_temp/base_student.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}
+signup
+{% endblock title %}
+{% block content_base_student %}
+    <main>
+        <section class="i pg fh rm ki xn vq gj qp gr hj rp hr">
+            <img src="{% static 'static2/images/shape-06.svg' %}" alt="Shape" class="h j k" />
+            <img src="{% static 'static2/images/shape-03.svg' %}" alt="Shape" class="h l m" />
+            <img src="{% static 'static2/images/shape-17.svg' %}" alt="Shape" class="h n o" />
+            <img src="{% static 'static2/images/shape-18.svg' %}" alt="Shape" class="h p q" />
+            <div class="animate_top bb af i va sg hh sm vk xm yi _n jp hi ao kp">
+
+                <span class="rc h r s zd/2 od zg gh"></span>
+                <span class="rc h r q zd/2 od xg mh"></span>
+                <div class="rj">
+                    <h2 class="ek ck kk wm xb">Create an Account</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <form class="sb" action="" method="post">
+                    {% csrf_token %}    
+                    <div class="wb">
+                        
+                        <label class="rc kk wm vb" for="id_username">User Name</label>
+                        {{form.username|add_attr:'placeholder:User Name,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}}
+                        
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="id_first_name">First Name</label>
+                        {{ form.first_name|add_attr:'placeholder:First Name,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40' }}
+                        {% comment %} <input type="text" name="fullname" id="fullname" placeholder="Devid Wonder"
+                            class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="id_last_name">Last Name</label>
+                        {{ form.last_name|add_attr:'placeholder:Last Name,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}}
+                        {% comment %} <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                            class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="id_password1">Password</label>
+                        {{ form.password1|add_attr:'placeholder:**************,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40' }}
+                        {% comment %} <input type="password" name="password" id="password" placeholder="**************"
+                            class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="id_password2">Password Confirmation</label>
+                        {{ form.password2|add_attr:'placeholder:**************,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}}
+                        {% comment %} <input type="password" name="password" id="password" placeholder="**************"
+                            class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <button class="vd rj ek rc rg gh lk ml il _l gi hi">
+                        Sign Up
+                    </button>
+                    <p class="sj hk xj rj ob">
+                        Already have an account?
+                        <a class="mk" href="{% url 'student:login'  %}"> Sign In </a>
+                    </p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+{% endblock content_base_student %}

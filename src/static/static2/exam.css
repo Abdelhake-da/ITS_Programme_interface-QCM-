@@ -1,0 +1,42 @@
+.question-div {
+    /* border:1px solid black; */
+    border-radius: 30px;
+    padding: 20px 30px;
+    box-shadow: 3px 3px 30px 0px #56a226;
+    width: calc(60% - 50px);
+}
+body{
+    height:100vh;
+    
+}
+header{
+    height:100px;
+    
+}
+footer{
+    height: 100px;
+
+}
+main{
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 20px;
+    min-width: 100px;
+    text-align: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+.prepare-exam{
+    width: 80%;
+}

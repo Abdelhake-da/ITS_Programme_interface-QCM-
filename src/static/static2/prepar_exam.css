@@ -1,0 +1,53 @@
+.do-exam{
+    /* position: fixed; */
+    
+    left: 0;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    /* background-color: antiquewhite; */
+    box-shadow: 5px 5px 15px 10px rgba(0, 0, 0, .3);
+    padding: 10px 30px;
+    margin: 20px auto;
+}
+
+.do-exam input[type="number"]:focus {
+  outline: none; /* Remove focus outline */
+  border-color: #99c2ff; /* Custom border color on focus */
+}
+.do-exam input[type="number"]{
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: transparent;
+    margin-right: 20px ;
+}
+.exam{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.exam h1{
+    font-size: 2rem;
+    color: black;
+}
+.exam>h1{
+    font-weight: bold;
+}
+.exam form{
+    width: 100% ;
+}
+.do-exam input[type="submit"]{
+    cursor: pointer;
+    font-weight: bold;
+
+}
+.do-exam input[type="submit"]:hover{
+    transform: scale(1.1);
+    color: green;
+}
