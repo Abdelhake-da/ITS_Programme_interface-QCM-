@@ -99,3 +99,5 @@ def result_of_exam(request):
         # )
         #
         return render(request, "exam/result.html", context)
+def index(request):
+    return HttpResponse('hello world')

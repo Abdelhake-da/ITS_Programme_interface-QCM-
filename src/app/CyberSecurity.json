@@ -1,0 +1,1202 @@
+[{
+    "module": "CyberSecurity",
+    "courses": [
+        {
+            "course": "Network Security",
+            "questions":[
+                {
+                    "question": "What is the purpose of a firewall in network security?",
+                    "choices": [
+                        "To encrypt network traffic",
+                        "To prevent unauthorized access to a network",
+                        "To monitor network performance",
+                        "To detect and remove malware"
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a strong password?",
+                    "choices": [
+                        "\"password123\"",
+                        "\"123456\"",
+                        "\"P@$$w0rd\"",
+                        "\"qwerty\""
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is a DDoS attack?",
+                    "choices": [
+                        "A type of malware that steals sensitive data",
+                        "A method of bypassing a firewall",
+                        "An attack that floods a network with traffic to disrupt its operation",
+                        "A technique used to intercept network communications"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of encryption in network security?",
+                    "choices": [
+                        "To prevent unauthorized access to a network",
+                        "To monitor network traffic",
+                        "To block malicious websites",
+                        "To protect data confidentiality"
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is a phishing attack?",
+                    "choices": [
+                        "An attack that exploits vulnerabilities in network protocols",
+                        "A technique used to intercept network communications",
+                        "An attack that tricks individuals into revealing sensitive information",
+                        "A method of spreading malware through email attachments"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a virtual private network (VPN)?",
+                    "choices": [
+                        "To encrypt network traffic",
+                        "To prevent denial-of-service attacks",
+                        "To filter malicious websites",
+                        "To monitor network performance"
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the role of intrusion detection systems (IDS) in network security?",
+                    "choices": [
+                        "To prevent unauthorized access to a network",
+                        "To encrypt network traffic",
+                        "To detect and respond to potential security breaches",
+                        "To filter spam emails"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is a firewall rule?",
+                    "choices": [
+                        "A set of instructions for configuring network devices",
+                        "A method of encrypting network traffic",
+                        "A technique used to detect malware",
+                        "A protocol for secure network communication"
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is a vulnerability assessment?",
+                    "choices": [
+                        "A technique used to verify network performance",
+                        "A process of identifying security weaknesses in a network",
+                        "A method of blocking malicious websites",
+                        "A protocol for secure network communication"
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is two-factor authentication (2FA)?",
+                    "choices": [
+                        "A method of encrypting network traffic",
+                        "A technique used to detect and remove malware",
+                        "An approach that combines two different authentication methods",
+                        "A protocol for secure network communication"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a demilitarized zone (DMZ) in network security?",
+                    "choices": [
+                        "To encrypt sensitive data",
+                        "To provide a secure area for network administrators",
+                        "To isolate internal network resources from the internet",
+                        "To detect and block malicious network traffic"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the main goal of social engineering attacks?",
+                    "choices": [
+                        "To exploit vulnerabilities in network protocols",
+                        "To intercept network communications",
+                        "To manipulate individuals into revealing sensitive information",
+                        "To flood a network with traffic to disrupt its operation"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of access control lists (ACLs) in network security?",
+                    "choices": [
+                        "To encrypt network traffic",
+                        "To prevent unauthorized access to a network",
+                        "To monitor network performance",
+                        "To detect and remove malware"
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the difference between symmetric and asymmetric encryption?",
+                    "choices": [
+                        "Symmetric encryption uses a single key, while asymmetric encryption uses two keys.",
+                        "Symmetric encryption is faster, while asymmetric encryption is more secure.",
+                        "Symmetric encryption is used for data at rest, while asymmetric encryption is used for data in transit.",
+                        "Symmetric encryption requires a public key, while asymmetric encryption requires a private key."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "course":"Cryptography",
+            "questions":[
+                {
+                    "question": "What is cryptography?",
+                    "choices": [
+                        "The study of secret codes and ciphers.",
+                        "The study of ancient civilizations.",
+                        "The study of computer programming languages.",
+                        "The study of quantum mechanics."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is commonly used for secure communication over the internet?",
+                    "choices": [
+                        "RSA",
+                        "SHA-256",
+                        "DES",
+                        "MD5"
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the key length of the Advanced Encryption Standard (AES) algorithm?",
+                    "choices": [
+                        "56 bits",
+                        "128 bits",
+                        "256 bits",
+                        "512 bits"
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which cryptographic hash function is widely used for password storage?",
+                    "choices": [
+                        "MD5",
+                        "SHA-1",
+                        "SHA-256",
+                        "AES"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is a symmetric key algorithm?",
+                    "choices": [
+                        "An algorithm that uses the same key for encryption and decryption.",
+                        "An algorithm that uses different keys for encryption and decryption.",
+                        "An algorithm that uses a public key for encryption and a private key for decryption.",
+                        "An algorithm that uses a private key for encryption and a public key for decryption."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is commonly used for secure email communication?",
+                    "choices": [
+                        "RSA",
+                        "AES",
+                        "DES",
+                        "PGP"
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is a digital signature?",
+                    "choices": [
+                        "A unique identifier for a digital document.",
+                        "An encryption key used for secure communication.",
+                        "A cryptographic hash of a digital document encrypted with a private key.",
+                        "A public key used for verifying the authenticity of a digital document."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is considered to be quantum-resistant?",
+                    "choices": [
+                        "RSA",
+                        "AES",
+                        "SHA-256",
+                        "Post-Quantum Cryptography (PQC) algorithms"
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is a one-time pad?",
+                    "choices": [
+                        "A symmetric encryption algorithm.",
+                        "A public key encryption algorithm.",
+                        "A stream cipher that uses a random key.",
+                        "A hash function used for digital signatures."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a nonce in cryptographic protocols?",
+                    "choices": [
+                        "To prevent replay attacks.",
+                        "To encrypt sensitive data.",
+                        "To authenticate users.",
+                        "To generate random numbers."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which type of attack attempts to uncover the encryption key by trying all possible keys?",
+                    "choices": [
+                        "Brute-force attack",
+                        "Man-in-the-middle attack",
+                        "Denial-of-service attack",
+                        "Social engineering attack"
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which cryptographic algorithm is used for secure web browsing (HTTPS)?",
+                    "choices": [
+                        "AES",
+                        "RSA",
+                        "SSL/TLS",
+                        "SHA-1"
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a salt in password hashing?",
+                    "choices": [
+                        "To add flavor to the password.",
+                        "To increase the length of the password.",
+                        "To prevent precomputed hash attacks.",
+                        "To encrypt the password."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which key exchange protocol is commonly used in SSL/TLS?",
+                    "choices": [
+                        "Diffie-Hellman",
+                        "Rivest-Shamir-Adleman",
+                        "ElGamal",
+                        "Digital Signature Algorithm"
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the main advantage of asymmetric encryption over symmetric encryption?",
+                    "choices": [
+                        "Faster encryption and decryption.",
+                        "Smaller key sizes.",
+                        "Better security against brute-force attacks.",
+                        "Easier key management."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a digital certificate in public key infrastructure (PKI)?",
+                    "choices": [
+                        "To encrypt sensitive data.",
+                        "To sign digital documents.",
+                        "To authenticate the identity of a party.",
+                        "To generate random numbers."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is used by the Secure Shell (SSH) protocol?",
+                    "choices": [
+                        "RSA",
+                        "AES",
+                        "DES",
+                        "SHA-256"
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a digital envelope in cryptography?",
+                    "choices": [
+                        "To encrypt a message using a symmetric key.",
+                        "To encrypt a message using a public key.",
+                        "To sign a digital document.",
+                        "To generate a random key."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which type of cipher involves substituting one letter with another letter?",
+                    "choices": [
+                        "Transposition cipher.",
+                        "Stream cipher.",
+                        "Substitution cipher.",
+                        "Block cipher."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which cryptographic algorithm is used for secure file hashing?",
+                    "choices": [
+                        "RSA.",
+                        "SHA-256.",
+                        "AES.",
+                        "Diffie-Hellman."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the main purpose of a digital timestamp in cryptography?",
+                    "choices": [
+                        "To encrypt a message.",
+                        "To sign a digital document.",
+                        "To verify the integrity of a digital document.",
+                        "To authenticate the identity of a party."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which type of attack involves intercepting and altering communication between two parties?",
+                    "choices": [
+                        "Brute-force attack.",
+                        "Man-in-the-middle attack.",
+                        "Denial-of-service attack.",
+                        "Social engineering attack."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is a rainbow table in password cracking?",
+                    "choices": [
+                        "A table of precomputed hash values.",
+                        "A table of encryption keys.",
+                        "A table of random numbers.",
+                        "A table of digital certificates."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is used by the Pretty Good Privacy (PGP) software?",
+                    "choices": [
+                        "RSA.",
+                        "AES.",
+                        "DES.",
+                        "ElGamal."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a digital watermark in cryptography?",
+                    "choices": [
+                        "To encrypt a message.",
+                        "To sign a digital document.",
+                        "To verify the integrity of a digital document.",
+                        "To provide copyright protection."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "Which cryptographic algorithm is used for secure voice communication (VoIP)?",
+                    "choices": [
+                        "RSA.",
+                        "AES.",
+                        "DES.",
+                        "Diffie-Hellman."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the main purpose of a hardware security module (HSM)?",
+                    "choices": [
+                        "To store digital certificates.",
+                        "To generate random numbers.",
+                        "To perform cryptographic operations securely.",
+                        "To authenticate users."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which encryption algorithm is used by the Secure Sockets Layer (SSL) protocol?",
+                    "choices": [
+                        "RSA.",
+                        "AES.",
+                        "DES.",
+                        "RC4."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is the purpose of steganography in cryptography?",
+                    "choices": [
+                        "To encrypt a message.",
+                        "To sign a digital document.",
+                        "To hide a message within another medium.",
+                        "To verify the integrity of a digital document."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which cryptographic algorithm is used by the Bitcoin cryptocurrency?",
+                    "choices": [
+                        "RSA.",
+                        "AES.",
+                        "SHA-256.",
+                        "Diffie-Hellman."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                }
+            ]
+        },
+        {
+            "course": "Secure Software Development",
+            "questions": [
+                {
+                    "question": "What is secure software development?",
+                    "choices": [
+                        "The process of creating software without any bugs.",
+                        "The process of creating software that is resistant to cyber attacks.",
+                        "The process of creating software using the latest programming languages.",
+                        "The process of creating software that is user-friendly."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the primary goal of secure software development?",
+                    "choices": [
+                        "To create software with advanced features.",
+                        "To create software that is visually appealing.",
+                        "To create software that is compatible with multiple platforms.",
+                        "To create software that protects data and users from security threats."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "Which of the following is not a secure coding practice?",
+                    "choices": [
+                        "Input validation.",
+                        "Proper error handling.",
+                        "Hardcoding sensitive information in the code.",
+                        "Regular security testing."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of threat modeling in secure software development?",
+                    "choices": [
+                        "To identify potential vulnerabilities and threats in the software.",
+                        "To create visually appealing user interfaces.",
+                        "To optimize the performance of the software.",
+                        "To improve the code readability."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of an input validation vulnerability?",
+                    "choices": [
+                        "Cross-site scripting (XSS).",
+                        "SQL injection.",
+                        "Cross-site request forgery (CSRF).",
+                        "Buffer overflow."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is a best practice for secure authentication in software development?",
+                    "choices": [
+                        "Storing passwords in plain text.",
+                        "Using weak encryption algorithms.",
+                        "Implementing multi-factor authentication.",
+                        "Allowing unlimited login attempts."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure coding guidelines?",
+                    "choices": [
+                        "To slow down the software development process.",
+                        "To ensure that the code is perfectly optimized.",
+                        "To provide developers with best practices for writing secure code.",
+                        "To limit the functionality of the software."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for handling errors?",
+                    "choices": [
+                        "Displaying detailed error messages to end-users.",
+                        "Ignoring error conditions in the code.",
+                        "Logging error messages without sensitive information.",
+                        "Using generic error codes without any specific details."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure software development methodology?",
+                    "choices": [
+                        "Waterfall model.",
+                        "Agile development.",
+                        "Prototype model.",
+                        "Spiral model."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the purpose of code reviews in secure software development?",
+                    "choices": [
+                        "To identify bugs in the code.",
+                        "To optimize the performance of the code.",
+                        "To ensure that the code meets the required coding standards.",
+                        "To identify security vulnerabilities in the code."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for data storage?",
+                    "choices": [
+                        "Storing sensitive data in plain text.",
+                        "Using weak encryption algorithms.",
+                        "Implementing data encryption.",
+                        "Storing data in a public repository."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure software development life cycle (SDLC)?",
+                    "choices": [
+                        "To ensure that the software is delivered on time.",
+                        "To improve the user experience of the software.",
+                        "To integrate security into every phase of the software development process.",
+                        "To reduce the cost of software development."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for session management?",
+                    "choices": [
+                        "Storing session tokens in clear text.",
+                        "Using weak session identifiers.",
+                        "Implementing session expiration and invalidation.",
+                        "Allowing session hijacking."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure deployment in secure software development?",
+                    "choices": [
+                        "To optimize the software for different platforms.",
+                        "To ensure that the software is delivered on time.",
+                        "To protect the software from unauthorized access during installation.",
+                        "To improve the user interface of the software."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure file handling?",
+                    "choices": [
+                        "Allowing unrestricted file uploads.",
+                        "Not validating file types and extensions.",
+                        "Storing uploaded files in a publicly accessible directory.",
+                        "Limiting file upload size and validating file content."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure logging?",
+                    "choices": [
+                        "Logging sensitive information such as passwords and credit card numbers.",
+                        "Storing logs in an unencrypted format.",
+                        "Implementing proper log rotation and retention policies.",
+                        "Disabling logging in production environments."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of security testing in secure software development?",
+                    "choices": [
+                        "To ensure that the software meets the required performance standards.",
+                        "To identify and fix bugs in the software.",
+                        "To verify that the software complies with legal regulations.",
+                        "To identify security vulnerabilities and assess the effectiveness of security controls."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure communication?",
+                    "choices": [
+                        "Transmitting sensitive information over unencrypted channels.",
+                        "Using weak cryptographic algorithms.",
+                        "Implementing secure communication protocols such as HTTPS.",
+                        "Storing sensitive information in plain text."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of security training and awareness in secure software development?",
+                    "choices": [
+                        "To increase the complexity of the software.",
+                        "To educate developers on the latest programming languages.",
+                        "To ensure that developers are aware of security threats and best practices.",
+                        "To limit the functionality of the software."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure configuration management?",
+                    "choices": [
+                        "Using default configurations without modifications.",
+                        "Storing configuration files in a publicly accessible location.",
+                        "Auditing and controlling configuration changes.",
+                        "Allowing unrestricted access to configuration files."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of penetration testing in secure software development?",
+                    "choices": [
+                        "To ensure that the software is compatible with different operating systems.",
+                        "To identify and fix bugs in the software.",
+                        "To simulate real-world attacks and identify vulnerabilities.",
+                        "To optimize the performance of the software."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure third-party components?",
+                    "choices": [
+                        "Using outdated and vulnerable components.",
+                        "Not verifying the integrity of third-party components.",
+                        "Regularly updating and patching third-party components.",
+                        "Allowing unrestricted access to third-party components."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure coding standards in secure software development?",
+                    "choices": [
+                        "To restrict the programming languages that can be used.",
+                        "To improve the performance of the software.",
+                        "To provide guidelines and best practices for writing secure code.",
+                        "To limit the functionality of the software."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure error handling?",
+                    "choices": [
+                        "Not logging error messages.",
+                        "Displaying detailed error messages to end-users.",
+                        "Ignoring error conditions in the code.",
+                        "Using generic error messages without any specific details."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure coding frameworks in secure software development?",
+                    "choices": [
+                        "To slow down the software development process.",
+                        "To provide developers with ready-made code snippets that are secure.",
+                        "To limit the functionality of the software.",
+                        "To ensure that the software is delivered on time."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a secure coding practice for secure data validation?",
+                    "choices": [
+                        "Not validating user input.",
+                        "Allowing unrestricted access to databases.",
+                        "Implementing input validation and sanitization.",
+                        "Storing data in plain text."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                }
+            ]
+        },
+        {
+            "course":"Operating System Security",
+            "questions":[
+                {
+                    "question": "What is the primary goal of operating system security?",
+                    "choices": [
+                        "To provide a user-friendly interface.",
+                        "To optimize system performance.",
+                        "To protect the system from unauthorized access and malicious activities.",
+                        "To ensure compatibility with various software applications."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security threat to an operating system?",
+                    "choices": [
+                        "A user forgetting their password.",
+                        "A power outage.",
+                        "An attacker attempting to exploit a software vulnerability.",
+                        "Hardware failure."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of user authentication in operating system security?",
+                    "choices": [
+                        "To determine the speed of the system.",
+                        "To limit the number of users on the system.",
+                        "To verify the identity of users and control access to system resources.",
+                        "To track user activity for auditing purposes."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a strong password?",
+                    "choices": [
+                        "\"Password123\"",
+                        "\"123456\"",
+                        "\"P@ssw0rd!\"",
+                        "\"abcdef\""
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of access control in operating system security?",
+                    "choices": [
+                        "To restrict access to system resources based on user roles and permissions.",
+                        "To increase system performance.",
+                        "To improve system compatibility with different software applications.",
+                        "To prevent hardware failures."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a privilege escalation attack?",
+                    "choices": [
+                        "Brute-forcing a user's password.",
+                        "Exploiting a vulnerability to gain administrative privileges.",
+                        "Intercepting network traffic.",
+                        "Denial-of-Service (DoS) attack."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the purpose of patch management in operating system security?",
+                    "choices": [
+                        "To install new software applications.",
+                        "To optimize system performance.",
+                        "To apply security updates and fixes to known vulnerabilities.",
+                        "To create system backups."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a malware type that targets operating systems?",
+                    "choices": [
+                        "Spyware.",
+                        "Firewall.",
+                        "Router.",
+                        "Keyboard."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the purpose of antivirus software in operating system security?",
+                    "choices": [
+                        "To prevent unauthorized access to the system.",
+                        "To protect against malware infections and detect malicious software.",
+                        "To improve system compatibility with different software applications.",
+                        "To optimize system performance."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against unauthorized physical access to a system?",
+                    "choices": [
+                        "Installing an intrusion detection system.",
+                        "Encrypting data at rest.",
+                        "Implementing biometric authentication.",
+                        "Using a secure web browser."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of a firewall in operating system security?",
+                    "choices": [
+                        "To prevent unauthorized access to the system.",
+                        "To encrypt data transmissions.",
+                        "To optimize system performance.",
+                        "To protect against hardware failures."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against network-based attacks?",
+                    "choices": [
+                        "Installing a virtual machine.",
+                        "Implementing a network intrusion detection system.",
+                        "Using a secure file system.",
+                        "Optimizing system memory usage."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the purpose of disk encryption in operating system security?",
+                    "choices": [
+                        "To prevent unauthorized access to the system.",
+                        "To optimize system performance.",
+                        "To encrypt data stored on the disk to protect against data theft.",
+                        "To protect against hardware failures."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against social engineering attacks?",
+                    "choices": [
+                        "Using a secure web browser.",
+                        "Implementing two-factor authentication.",
+                        "Encrypting data transmissions.",
+                        "Educating users about potential threats and best practices."
+                    ],
+                    "answers": [
+                        3
+                    ]
+                },
+                {
+                    "question": "What is the purpose of intrusion detection and prevention systems (IDPS) in operating system security?",
+                    "choices": [
+                        "To optimize system performance.",
+                        "To detect and respond to unauthorized activity and attacks on the system.",
+                        "To prevent hardware failures.",
+                        "To restrict access to system resources based on user roles and permissions."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against buffer overflow attacks?",
+                    "choices": [
+                        "Installing a firewall.",
+                        "Encrypting sensitive data.",
+                        "Applying software updates and patches.",
+                        "Using a secure web browser."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of backup and disaster recovery in operating system security?",
+                    "choices": [
+                        "To prevent unauthorized access to the system.",
+                        "To optimize system performance.",
+                        "To protect against data loss and ensure business continuity.",
+                        "To protect against hardware failures."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against phishing attacks?",
+                    "choices": [
+                        "Using a secure web browser.",
+                        "Encrypting data transmissions.",
+                        "Implementing email filters and spam detection.",
+                        "Optimizing system memory usage."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of system logging and auditing in operating system security?",
+                    "choices": [
+                        "To optimize system performance.",
+                        "To detect and investigate security incidents and policy violations.",
+                        "To prevent hardware failures.",
+                        "To restrict access to system resources based on user roles and permissions."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against malware infections?",
+                    "choices": [
+                        "Using a secure web browser.",
+                        "Implementing two-factor authentication.",
+                        "Installing antivirus software.",
+                        "Encrypting data transmissions."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of security updates and patches in operating system security?",
+                    "choices": [
+                        "To optimize system performance.",
+                        "To prevent hardware failures.",
+                        "To protect against known vulnerabilities and security weaknesses.",
+                        "To restrict access to system resources based on user roles and permissions."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against unauthorized software installations?",
+                    "choices": [
+                        "Using a secure web browser.",
+                        "Implementing software whitelisting.",
+                        "Encrypting data at rest.",
+                        "Optimizing system memory usage."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                },
+                {
+                    "question": "What is the purpose of secure boot in operating system security?",
+                    "choices": [
+                        "To prevent unauthorized access to the system.",
+                        "To optimize system performance.",
+                        "To ensure that only trusted and authorized software is loaded during the system startup process.",
+                        "To protect against hardware failures."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against SQL injection attacks?",
+                    "choices": [
+                        "Installing a firewall.",
+                        "Encrypting sensitive data.",
+                        "Applying input validation and parameterized queries.",
+                        "Using a secure web browser."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "What is the purpose of vulnerability scanning and penetration testing in operating system security?",
+                    "choices": [
+                        "To optimize system performance.",
+                        "To prevent hardware failures.",
+                        "To identify and mitigate security vulnerabilities and weaknesses in the system.",
+                        "To restrict access to system resources based on user roles and permissions."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against unauthorized network access?",
+                    "choices": [
+                        "Installing a firewall.",
+                        "Encrypting data at rest.",
+                        "Using a secure file system.",
+                        "Optimizing system memory usage."
+                    ],
+                    "answers": [
+                        0
+                    ]
+                },
+                {
+                    "question": "What is the purpose of role-based access control (RBAC) in operating system security?",
+                    "choices": [
+                        "To optimize system performance.",
+                        "To prevent hardware failures.",
+                        "To restrict access to system resources based on user roles and permissions.",
+                        "To protect against unauthorized software installations."
+                    ],
+                    "answers": [
+                        2
+                    ]
+                },
+                {
+                    "question": "Which of the following is an example of a security measure to protect against data exfiltration?",
+                    "choices": [
+                        "Installing an intrusion detection system.",
+                        "Encrypting sensitive data.",
+                        "Applying software updates and patches.",
+                        "Using a secure web browser."
+                    ],
+                    "answers": [
+                        1
+                    ]
+                }
+            ]
+        }
+    ]
+}
+]

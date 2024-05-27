@@ -1,0 +1,313 @@
+{% extends "student_temp/base_student.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}
+profile
+{% endblock title %}
+{% block style_link %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock style_link %}
+
+{% block content_base_student %}
+    {% with user|get_student as std %}
+
+        <main>
+            <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+                style="min-height: 600px; background-image: url('https://i.pinimg.com/originals/57/75/82/577582fa909d7ab38d21d861a8a46980.jpg'); background-size: cover; background-position: center top;">
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10">
+                            <h1 class="display-2 text-white" style="width: 110%;">Hello {{std}}</h1>
+                            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with
+                                your work and manage your projects or assigned tasks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+            <!-- Page content -->
+                <div class="container-fluid mt--7">
+                    <div class="row">
+                        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                            <div class="card card-profile shadow">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-3 order-lg-2">
+                                        <div class="card-profile-image"  id='profile-img'>
+
+                                            <label for="image-input">
+                                                <div id="user-img"  class="rounded-circle img" style=" background-image: url('{{std.img.url}}'); background-size: cover; background-position: center top;width: 180px;height: 180px; border-radius: 50%; margin-left:  15px;"></div>
+                                            </label>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0 pt-md-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            {% with std|get_std_info as info %}
+                                            <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                                                <div>
+                                                    <span class="heading">{{info.0}}</span>
+                                                    <span class="description">Modules</span>
+                                                </div>
+                                                <div>
+                                                    <span class="heading">{{info.1}}</span>
+                                                    <span class="description">Courses</span>
+                                                </div>
+                                                <div>
+                                                    <span class="heading">{{info.2}}</span>
+                                                    <span class="description">Exams</span>
+                                                </div>
+                                            </div>
+                                        </div>{% endwith %}
+                                    </div>
+                                    <div class="text-center">
+                                        <h3>
+                                            {{std}}<span class="font-weight-light">, {{std.birth_day|get_age}} </span>
+                                        </h3>
+                                        <div class="h5 font-weight-300">
+                                            <i class="ni location_pin mr-2"></i>{{std.city}}, {{std.country}}
+                                        </div>
+                                        
+                                        <div>
+                                            <i class="ni education_hat mr-2"></i>{{std.univ}}
+                                        </div>
+                                        <hr class="my-4">
+                                        <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and
+                                            records all of his own music.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 order-xl-1">
+                            <div class="card bg-secondary shadow">
+                                <div class="card-header bg-white border-0">
+                                    <div class="nav-item active" onclick="show_views('info',this)">
+                                        <h3>Your Info</h3>
+                                    </div>
+                                    <div class="nav-item " onclick="show_views('statistic',this)">
+                                        <h3>Statistic</h3>
+                                    </div>
+                                    <div class="nav-item " onclick="show_views('exam',this)">
+                                        <h3>Exams</h3>
+                                    </div>
+                                </div>
+                                <div class="card-body my-card" id="info">
+                                    
+                                        {% csrf_token %}
+                                        <div class="top-bar-info ">
+                                            <h6 class="heading-small text-muted mb-4 user-info">User information</h6>
+                                            <div class="my-btn"  onclick="show_submit()">edit</div>
+                                        </div>
+                                        <div class="pl-lg-4">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-username">Username</label>
+                                                        <input type="text" id="input-username"
+                                                            class="form-control form-control-alternative" placeholder="Username"
+                                                            value="{{std.user}}" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-first-name">First name</label>
+                                                        <input type="text" id="input-first-name"
+                                                            class="form-control form-control-alternative" placeholder="First name"
+                                                            value="{{std.first_name}}" name="first_name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-last-name">Last name</label>
+                                                        <input type="text" id="input-last-name"
+                                                            class="form-control form-control-alternative" placeholder="Last name"
+                                                            value="{{std.last_name}}" name="last_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-email">Email address</label>
+                                                        <input type="email" id="input-email"
+                                                            class="form-control form-control-alternative"
+                                                            placeholder="{{std.email}}" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-birth-day">Birth Day</label>
+                                                        <input type="date" id="input-birth-day"
+                                                            class="form-control form-control-alternative" 
+                                                            value="{{std.birth_day|get_date}}" name="birth_day">
+                                                            
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-birth-day">Phone number</label>
+                                                        <input type="text" id="input-birth-day" class="form-control form-control-alternative"
+                                                            value="{{std.phone}}" name="phone" pattern="(0|+213)\d{9}">
+                                                
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-birth-day">University</label>
+                                                        <input type="text" id="input-birth-day" class="form-control form-control-alternative"
+                                                            value="{{std.univ}}" name="univ">
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <!-- Address -->
+                                        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                                        <div class="pl-lg-4">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-address">Address</label>
+                                                        <input id="input-address" class="form-control form-control-alternative"
+                                                            placeholder="Home Address"
+                                                            value="{{std.address}}" type="text" name="address">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-city">City</label>
+                                                        <input type="text" id="input-city" class="form-control form-control-alternative"
+                                                            placeholder="City" value="{{std.city}}" name="city">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-country">Country</label>
+                                                        <input type="text" id="input-country"
+                                                            class="form-control form-control-alternative" placeholder="Country"
+                                                            value="{{std.country}}" name="county">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <!-- Description -->
+                                        <h6 class="heading-small text-muted mb-4">About me</h6>
+                                        <div class="pl-lg-4">
+                                            <div class="form-group focused">
+                                                <label>About Me</label>
+                                                <textarea rows="4" class="form-control form-control-alternative"
+                                                    placeholder="A few words about you ..."  name="about">{{std.about}} </textarea>
+                                            </div>
+                                        </div>
+                                        <input type="submit" id="edit-user-info" class="my-btn hidden" value="submit">
+                                    
+                                </div>
+                                <div class="card-body my-card hidden" id="statistic">
+                                    <div class="chart">
+                                        <h2>Average grades for each Course</h2>
+                                        <canvas id="module_test" style=" height: 350px; max-height:400px; max-width: 100%;"></canvas>
+                                    </div>
+                                    <div class="chart">
+                                        <h2>Subjects in each Course </h2>
+                                        <canvas id="module_subjects" style=" height: 350px; max-height:400px; max-width: 100%;"></canvas>
+                                    </div>
+                                    
+                                    
+                                    <div class="chart mather-card" id="degree">
+                                        <h2>subjects degrees for each Course </h2>
+                                        <div class="titles" >
+                                            <ul>
+                                                {% with 0 as count %}
+                                                    
+                                                    {% for var in nsc.0 %}
+                                                        <li {% if count == 0 %} class="active"{% endif %} onclick="show_chart('{{"degree-chart"|concatenate:count}}',this)"> {{var}} </li>
+                                                        {% increment count as count %}
+                                                    {% endfor %}
+                                                        
+                                                {% endwith %}
+                                            </ul>
+                                    </div>
+                                            {% with 0 as count %}
+                                            
+                                                {% for chart in nsc.1 %}
+                                                <div style="width:95%"   >
+                                                        <canvas class=" {% if count != 0 %}hidden{% endif %}" id={{"degree-chart"|concatenate:count}} style=" height: 350px; max-height:400px; max-width: 100%;"></canvas>
+                                                </div>
+                                                {% increment count as count %}
+                                                {% endfor %}
+                                            {% endwith %} 
+                                </div>
+
+                                    <div class="chart mather-card" id="times">
+                                        <h2>The time taken for each subject in each session</h2>
+                                        <div class="titles">
+                                            <ul>
+                                                {% with 0 as count %}
+                                                    
+                                                    {% for var in nsc.0 %}
+                                                        <li {% if count == 0 %} class="active"{% endif %} onclick="show_time_chart('{{"time-chart"|concatenate:count}}',this)"> {{var}} </li>
+                                                        {% increment count as count %}
+                                                    {% endfor %}
+                                                        
+                                                {% endwith %}
+                                            </ul>
+                                        </div>
+                                            {% with 0 as count %}
+                                                {% for chart in nsc.1 %}
+                                                <div style="width:95%"   >
+                                                        <canvas class=" {% if count != 0 %}hidden{% endif %}" id={{"time-chart"|concatenate:count}} style=" height: 350px; max-height:400px; max-width: 100%;"></canvas>
+                                                </div>
+                                                {% increment count as count %}
+                                                {% endfor %}
+                                            {% endwith %} 
+                                    </div> 
+                                    
+                                    </div>
+                                </div>
+                                <div id="exam" class="card-body my-card hidden">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    {% endwith %}
+    
+{% endblock content_base_student %}
+{% block script_link %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/chart/chart.js' %}"></script>
+<script>
+    {% comment %} console.log({{module_subjects_data|safe}}) {% endcomment %}
+    polar_area_chart("module_test",{{student_module_test_data.0|safe}},{{student_module_test_data.1|safe}})  
+    pie_chart("module_subjects",{{module_subjects_data.0|safe}},{{module_subjects_data.1|safe}})
+    
+    {% with 0 as count %}
+        {% comment %} console.log() {% endcomment %}
+        {% for chart  in nsc.1 %}
+            bar_chart('{{"degree-chart"|concatenate:count}}',{{chart.0|safe}},{{chart.1|safe}})
+            
+            {% increment count as count %}
+        {% endfor %}
+        {% for chart  in tsc.1 %}
+            bar_chart('{{"time-chart"|concatenate:count}}',{{chart.0|safe}},{{chart.1|safe}})
+            
+            {% increment count as count %}
+        {% endfor %}
+            
+        
+    {% endwith %}
+</script>
+<script defer src="{% static 'js/profile.js' %}"></script>
+{% endblock script_link %}

@@ -52,7 +52,7 @@ LogIn
         </div>
         
     </div>
-    <h1>     </h1>
+    
     <form class="form" action="{% url 'exam:result' %}" method="POST">
         {% csrf_token %}
         {% with 0 as count_questions %}
@@ -96,7 +96,7 @@ LogIn
                         </ul>
                     </div> 
                     <div class=" btn-control">
-                        <div class= 'btn'  disabled onclick="previous({{count_questions}})">Previous</div>
+                        <div class="btn" onclick="previous({{count_questions}})" disabled> Previous</div>
                         <div  class= 'btn' onclick="next({{count_questions}})" >Next</div>
                     </div>
                 </div>

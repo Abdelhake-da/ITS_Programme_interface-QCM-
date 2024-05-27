@@ -1,358 +1,373 @@
 [
     {
-        "module": "physiologie",
+        "module": "Network",
         "courses": [
             {
-                "course": "physiologie du systeme nerveux",
+                "course": "Network Protocols",
                 "questions": [
                     {
-                        "question": "Le potentiel d'action est initié par ",
+                        "question": "Which protocol is responsible for assigning IP addresses to devices on a network?",
                         "choices": [
-                            "L'ouverture des canaux sodique",
-                            "La fermeture des canaux sodique",
-                            "L'ouverture des canaux potassique",
-                            "La fermeture des canaux potassique",
-                            "L'activation de la pompe NA+/K+"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "Le système nerveux végétatif ",
-                        "choices": [
-                            "A pour seul neurotransmetteur l'adrénaline",
-                            "A pour seul neurotransmetteur l'acétylecholine",
-                            "Innerve le muscle squelettique",
-                            "Innerve le myocarde",
-                            "Est soumis à un contrôle volontaire"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "L'un des cellules suivantes n'est pas retrouvée au niveau du système nerveux central ",
-                        "choices": [
-                            "Astrocyte",
-                            "Cellule microgliale",
-                            "Cellule de Schwann",
-                            "Oligodendrocyte",
-                            "Neurone"
+                            "TCP",
+                            "DNS",
+                            "DHCP",
+                            "HTTP"
                         ],
                         "answers": [
                             2
                         ]
                     },
                     {
-                        "question": "L'un des composants suivants n'appartient pas au système nerveux central ",
+                        "question": "Which protocol provides secure communication over the internet?",
                         "choices": [
-                            "Le cerveau",
-                            "Le tronc cérébral",
-                            "Le cervelet",
-                            "Les nerfs crâniens",
-                            "La moelle épinière"
-                        ],
-                        "answers": [
-                            2
-                        ]
-                    },
-                    {
-                        "question": "La structure nerveuse qui intègre le mouvement réflexe est ",
-                        "choices": [
-                            "Structure sous-corticale",
-                            "Structure corticale",
-                            "Tronc cérébral",
-                            "Cervelet",
-                            "Moelle épinières"
-                        ],
-                        "answers": [
-                            5
-                        ]
-                    },
-                    {
-                        "question": "Les voies motrices du SN somatique sont des voies ",
-                        "choices": [
-                            "Afférentes volontaire",
-                            "Afférentes involontaire",
-                            "Effarantes volontaire",
-                            "Efférentes involontaires",
-                            "Mixtes"
-                        ],
-                        "answers": [
-                            2
-                        ]
-                    },
-                    {
-                        "question": "Tous les neurotransmetteurs ci-après sont excitateurs sauf un, le quel ",
-                        "choices": [
-                            "L'acétylcholine",
-                            "Aspartate",
-                            "Glutamine",
-                            "GABA ( acide y amino-butarique)",
-                            "La substance P"
+                            "HTTPS",
+                            "FTP",
+                            "SNMP",
+                            "SMTP"
                         ],
                         "answers": [
                             0
                         ]
                     },
                     {
-                        "question": "L'adrénaline a les mêmes récepteurs que ",
+                        "question": "Which protocol is used to transfer files over the internet?",
                         "choices": [
-                            "La noradrénaline",
-                            "L'acétylcholine",
-                            "L'éphédrine",
-                            "L'atropine",
-                            "La dopa"
-                        ],
-                        "answers": [
-                            4
-                        ]
-                    },
-                    {
-                        "question": "La noradrénaline et acétylcholine ",
-                        "choices": [
-                            "N'ont pas les mêmes récepteurs",
-                            "Sont le médiateur du système nerveux autonome",
-                            "Sont élaborés par 02 systèmes opposés",
-                            "Sont élaborés par 02 systèmes différant",
-                            "Génèrent les mêmes effets physiologiques"
+                            "FTP",
+                            "ICMP",
+                            "POP3",
+                            "RDP"
                         ],
                         "answers": [
                             0
                         ]
                     },
                     {
-                        "question": "La noradrénaline est ",
+                        "question": "Which protocol is used for email retrieval?",
                         "choices": [
-                            "Synthétise par la médullosurrénale et les fibres post ganglionnaires du système sympathique",
-                            "Catabolisée par l'ésérine",
-                            "Synthétisée à partir de la tyrosine",
-                            "Un neuromédiateur spécifique des récepteurs adrénergiques",
-                            "Spécifique du système parasympathique"
+                            "FTP",
+                            "SMTP",
+                            "POP3",
+                            "HTTP"
                         ],
                         "answers": [
                             2
                         ]
                     },
                     {
-                        "question": "Les structures nerveuses qu intègrent les programmes moteurs primaires sont ",
+                        "question": "Which protocol is responsible for translating domain names to IP addresses?",
                         "choices": [
-                            "Structure sous corticales",
-                            "Structures cortical",
-                            "Tronc cérébral",
-                            "Cervelet",
-                            "Moelle épinière"
+                            "DNS",
+                            "DHCP",
+                            "ICMP",
+                            "SNMP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for real-time communication over the internet?",
+                        "choices": [
+                            "SMTP",
+                            "FTP",
+                            "SIP",
+                            "HTTP"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used to send and receive email messages?",
+                        "choices": [
+                            "FTP",
+                            "HTTP",
+                            "SMTP",
+                            "SNMP"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for routing packets across different networks?",
+                        "choices": [
+                            "ICMP",
+                            "DHCP",
+                            "TCP",
+                            "IP"
+                        ],
+                        "answers": [
+                            3
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for remote login and command execution on a remote computer?",
+                        "choices": [
+                            "SSH",
+                            "SNMP",
+                            "FTP",
+                            "DNS"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for error reporting and network troubleshooting?",
+                        "choices": [
+                            "ICMP",
+                            "DHCP",
+                            "TCP",
+                            "IP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for secure shell access to a remote computer?",
+                        "choices": [
+                            "SNMP",
+                            "FTP",
+                            "SSH",
+                            "DNS"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used to send and receive email messages on the web?",
+                        "choices": [
+                            "FTP",
+                            "HTTP",
+                            "SMTP",
+                            "IMAP"
+                        ],
+                        "answers": [
+                            3
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for establishing a reliable connection between two devices?",
+                        "choices": [
+                            "TCP",
+                            "UDP",
+                            "ICMP",
+                            "IP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for real-time streaming of audio and video?",
+                        "choices": [
+                            "FTP",
+                            "HTTP",
+                            "RTP",
+                            "SMTP"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for remotely managing and monitoring network devices?",
+                        "choices": [
+                            "SNMP",
+                            "HTTP",
+                            "SMTP",
+                            "FTP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for email transmission between mail servers?",
+                        "choices": [
+                            "FTP",
+                            "SMTP",
+                            "POP3",
+                            "HTTP"
                         ],
                         "answers": [
                             1
                         ]
                     },
                     {
-                        "question": "concernant les neurones viscéraux moteurs (autonomes moteur ) ",
+                        "question": "Which protocol is used to resolve IP addresses to MAC addresses on a local network?",
                         "choices": [
-                            "Ils innervent le muscle cardiaque, les muscles lisses et les glandes",
-                            "Ils innervent les muscles squelettiques",
-                            "Ils conduisent les influx en provenance du SNC",
-                            "Ils conduisent les influx qui proviennent des viscères",
-                            "Ils conduisent les influx des neurones sensoriels aux neurones moteurs"
-                        ],
-                        "answers": [
-                            0,
-                            3
-                        ]
-                    }
-                ]
-            },
-            {
-                "course": "Le Muscle strié squelettique et bases neurophysiologiques de la sensibilité de la motricité",
-                "questions": [
-                    {
-                        "question": "Parmi les caractéristique suivantes la quelle ne concerne pas le muscle squelettique ",
-                        "choices": [
-                            "La contraction du muscle squelettique est rapide",
-                            "La contraction du muscle squelettique est sous le contrôle du système nerveux somatique",
-                            "Les cellules constitutives des muscles squelettiquessont striées",
-                            "La contraction du muscle squelettique est involontaire",
-                            "Le muscle squelettique se fatigue rapidement lors de la contraction musculaire"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "Parmi ces nerfs crâniens, les quelles sont mixtes(sensitif et moteur )",
-                        "choices": [
-                            "Olfactif",
-                            "Facial",
-                            "Pathétique",
-                            "Trijumeau",
-                            "Auditif et vestibulaire"
-                        ],
-                        "answers": [
-                            1,
-                            3
-                        ]
-                    },
-                    {
-                        "question": "Parmi ces nerfs crâniens lequel sont mixte (sensitif et moteur ) ",
-                        "choices": [
-                            "Olfactif",
-                            "Pathétique",
-                            "Facial",
-                            "Optique"
+                            "ICMP",
+                            "DHCP",
+                            "ARP",
+                            "IP"
                         ],
                         "answers": [
                             2
                         ]
                     },
                     {
-                        "question": "Parmi ces nerfs crâniens, lequel n'est que moteur ",
+                        "question": "Which protocol is used to synchronize clocks between devices on a network?",
                         "choices": [
-                            "Olfactif",
-                            "Auditif",
-                            "Trijumeau",
-                            "Facial",
-                            "Pathétique"
+                            "NTP",
+                            "FTP",
+                            "TCP",
+                            "IP"
                         ],
                         "answers": [
-                            4
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for establishing a connectionless communication between devices?",
+                        "choices": [
+                            "TCP",
+                            "UDP",
+                            "ICMP",
+                            "IP"
+                        ],
+                        "answers": [
+                            1
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for secure file transfer over the internet?",
+                        "choices": [
+                            "FTP",
+                            "SFTP",
+                            "SNMP",
+                            "SMTP"
+                        ],
+                        "answers": [
+                            1
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for automatic IP address configuration in the absence of a DHCP server?",
+                        "choices": [
+                            "TCP",
+                            "DNS",
+                            "ICMP",
+                            "APIPA"
+                        ],
+                        "answers": [
+                            3
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for remote desktop access to a computer?",
+                        "choices": [
+                            "SSH",
+                            "RDP",
+                            "FTP",
+                            "DNS"
+                        ],
+                        "answers": [
+                            1
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for detecting and correcting errors in transmitted data packets?",
+                        "choices": [
+                            "ICMP",
+                            "DHCP",
+                            "TCP",
+                            "UDP"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for secure web browsing?",
+                        "choices": [
+                            "FTP",
+                            "HTTP",
+                            "HTTPS",
+                            "SMTP"
+                        ],
+                        "answers": [
+                            2
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for multicasting data to multiple devices on a network?",
+                        "choices": [
+                            "TCP",
+                            "UDP",
+                            "ICMP",
+                            "IP"
+                        ],
+                        "answers": [
+                            1
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for remote monitoring and configuration of network devices?",
+                        "choices": [
+                            "SNMP",
+                            "FTP",
+                            "SMTP",
+                            "SSH"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for sending and receiving network management information?",
+                        "choices": [
+                            "SNMP",
+                            "HTTP",
+                            "SMTP",
+                            "FTP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for resolving IP addresses to hostnames?",
+                        "choices": [
+                            "DNS",
+                            "DHCP",
+                            "ICMP",
+                            "SNMP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is responsible for establishing a connection-oriented communication between devices?",
+                        "choices": [
+                            "TCP",
+                            "UDP",
+                            "ICMP",
+                            "IP"
+                        ],
+                        "answers": [
+                            0
+                        ]
+                    },
+                    {
+                        "question": "Which protocol is used for remote file access and management?",
+                        "choices": [
+                            "FTP",
+                            "HTTP",
+                            "SNMP",
+                            "SSH"
+                        ],
+                        "answers": [
+                            0
                         ]
                     }
                 ]
             }
-        ]
-    },
-    {
-        "module": "Math",
-        "courses": [
-            {
-                "course": "multuplication one number",
-                "questions": [
-                    {
-                        "question": "1 X 2",
-                        "choices": [
-                            "1",
-                            "0",
-                            "4",
-                            "2",
-                            "7"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "4 x 5",
-                        "choices": [
-                            "10",
-                            "15",
-                            "20",
-                            "25"
-                        ],
-                        "answers": [
-                            2
-                        ]
-                    },
-                    {
-                        "question": "7 x 3",
-                        "choices": [
-                            "12",
-                            "15",
-                            "18",
-                            "21"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "6 x 8",
-                        "choices": [
-                            "32",
-                            "48",
-                            "64",
-                            "72"
-                        ],
-                        "answers": [
-                            1
-                        ]
-                    },
-                    {
-                        "question": "9 x 5",
-                        "choices": [
-                            "35",
-                            "40",
-                            "45",
-                            "50"
-                        ],
-                        "answers": [
-                            2
-                        ]
-                    },
-                    {
-                        "question": "3 x 4",
-                        "choices": [
-                            "12",
-                            "14",
-                            "16",
-                            "18"
-                        ],
-                        "answers": [
-                            0
-                        ]
-                    },
-                    {
-                        "question": "8 x 2",
-                        "choices": [
-                            "10",
-                            "14",
-                            "32",
-                            "16"
-                        ],
-                        "answers": [
-                            3
-                        ]
-                    },
-                    {
-                        "question": "6 x 3",
-                        "choices": [
-                            "12",
-                            "15",
-                            "18",
-                            "21"
-                        ],
-                        "answers": [
-                            2
-                        ]
-                    },
-                    {
-                        "question": "10 x 5",
-                        "choices": [
-                            "40",
-                            "50",
-                            "60",
-                            "70"
-                        ],
-                        "answers": [
-                            1
-                        ]
-                    },
-                    {
-                        "question": "7 x 6",
-                        "choices": [
-                            "36",
-                        "42",
-                        "48",
-                        "54"
 
-                        ],
-                        "answers": [
-                            1
-                        ]
-                    }
-                ]
-            }
         ]
     }
 ]

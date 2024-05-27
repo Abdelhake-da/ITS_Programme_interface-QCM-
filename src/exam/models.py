@@ -26,4 +26,14 @@ class Exam(models.Model):
     date_passed = models.DateField(auto_now_add=True)
     time_passed = models.TimeField(auto_now_add=True)
     num_correct_answers = models.IntegerField(null=True)
+    def __str__(self):
+        return f"{self.student}    {self.id}"
 
+class Subject_answers_for_student(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE,blank=True)
+    correct_answers = models.IntegerField(blank=True, default=0, null=True)
+    wrong_answers = models.IntegerField(blank=True,default=0,null=True)
+    time_taking = models.FloatField(blank=True, null=True, default=0)
+    def __str__(self):
+        return f"{self.student} -- {self.course}"

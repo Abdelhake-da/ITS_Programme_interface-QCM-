@@ -8,10 +8,6 @@ signup
 {% block content_base_student %}
     <main>
         <section class="i pg fh rm ki xn vq gj qp gr hj rp hr">
-            <img src="{% static 'static2/images/shape-06.svg' %}" alt="Shape" class="h j k" />
-            <img src="{% static 'static2/images/shape-03.svg' %}" alt="Shape" class="h l m" />
-            <img src="{% static 'static2/images/shape-17.svg' %}" alt="Shape" class="h n o" />
-            <img src="{% static 'static2/images/shape-18.svg' %}" alt="Shape" class="h p q" />
             <div class="animate_top bb af i va sg hh sm vk xm yi _n jp hi ao kp">
 
                 <span class="rc h r s zd/2 od zg gh"></span>
@@ -39,6 +35,26 @@ signup
                         {{ form.last_name|add_attr:'placeholder:Last Name,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}}
                         {% comment %} <input type="email" name="email" id="email" placeholder="example@gmail.com"
                             class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="id_last_name">Email</label>
+                        {{ form.email|add_attr:'placeholder:email@email.com,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}}
+                        {% comment %} <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                            class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" /> {% endcomment %}
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="phone_number">Phone Number</label>
+                        {% comment %} {{ form.phone_number|add_attr:'placeholder:07********,class:vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40'}} {% endcomment %}
+                        <input type="text" name="phone_number" id="phone_number" placeholder="07********" class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" required />
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="birth_day">Birth Day</label>
+                        <input  name="birth_day" id="birth_day" type="text" placeholder="05/02/2000" onfocus="(this.type='date')" class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" required/>
+                    </div>
+                    <div class="wb">
+                        <label class="rc kk wm vb" for="university">University</label>
+                        
+                        <input type="text" name="university" id="university" placeholder="Oran1" class="vd hh rg zk _g ch hm dm fm pl/50 xi mi sm xm pm dn/40" required/>
                     </div>
                     <div class="wb">
                         <label class="rc kk wm vb" for="id_password1">Password</label>

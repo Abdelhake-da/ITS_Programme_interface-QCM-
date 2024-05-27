@@ -1,7 +1,8 @@
-  {% load static %}
-  <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
-        @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false">
-        <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i">
+{% load static %}
+{% load custom_filters %}
+    <header class="g s r vd ya cj" :class="{ 'hh sm _k dj bl ll' : stickyMenu }"
+        @scroll.window="stickyMenu = (window.pageYOffset > 20) ? true : false" style="padding:20px 0;background-color: rgba(255, 255, 255, 0.493);">
+        <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i" id="header_item_list">
             <div class="vd to/4 tc wf yf">
                 <a href="{% url 'home' %}">
                     <h1 class="b wm kk" style="font-size: 2rem;">ESP Education</h1>
@@ -27,38 +28,32 @@
                 </button>
 
             </div>
-            
-            
-                
-            <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }"{% if is_exam %}style = "justify-content: flex-end;"{% endif %}>
-                {% if not is_exam %}
+            <div class="vd wo/4 sd qo f ho oo wf yf header_item_list" :class="{ ' d hh rm sr td ud qg ug jc yh': navigationOpen }"{% if is_exam %}style = "justify-content: flex-end;"{% endif %}>
                 <nav>
                     <ul class="tc _o sf yo cg ep">
-                        <li class= "header_item"><a href="{% url 'home' %}" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
-                        <li class= "header_item"><a href="{% url 'home' %}#modules" class="xl">Modules</a></li>
+                        {% if not is_exam %}
+                            <li class= "header_item"><a href="{% url 'home' %}" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
+                            <li class= "header_item"><a href="{% url 'home' %}#modules" class="xl">Modules</a></li>
+                        {% endif %}
+                            {% if user.is_authenticated %}
+                                {% if not is_exam %}
+                                    <li class= "header_item"><a href="{% url 'student:logout' %}" style="color: rgb(161, 2, 2);">LogOut</a></li>
+                                {% endif %}
+                                <li class= "header_item">
+                                    <a {% if not is_exam %} href="{% url 'student:profile' %}"{% endif %}  class="xl user-info ">
+                                        {% with user|get_student as std  %}
+                                            <h2 style="margin: 0;">{{std}}</h2>
+                                            <div id="img" style=" background-image: url('{{std.img.url}}'); background-size: cover; background-position: center top;width: 60px;height: 60px; border-radius: 50%; margin-left:  15px;"></div>
+                                        {% endwith %}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class= "header_item"><a href="{% url 'student:signup'  %}" class="xl">Sign Up</a></li>
+                                <li class= "header_item header_item_sign"><a href="{% url 'student:login'  %}" class="xl ">Sign In</a></li>
+                            {% endif %}
+                        
                     </ul>
                 </nav>
-                {% endif %}
-                
-                <ul class="tc wf ig pb no">
-                    {% if user.is_authenticated %}
-                    <ul class="tc _o sf yo cg ep">
-                        {% if not is_exam %}
-                        <li class= "header_item"><a href="{% url 'student:logout' %}">LogOut</a></li>
-                        {% endif %}
-                        <li class= "header_item">
-                            <a {% if not is_exam %} href="{% url 'home' %}#modules"{% endif %}  class="xl user-info ">
-                                <h1 >{{user}}</h1>
-                                <img src="{% static 'static2/images/myImage/user.png' %}" alt="User" />
-                            </a>
-                        </li>
-                    </ul>    
-                    {% else %}
-                    <ul>
-                        <li class= "header_item"><a href="{% url 'student:login'  %}" class="xl">Sign In</a></li>
-                        <li class= "header_item"><a href="{% url 'student:signup'  %}" class="xl">Sign Up</a></li>
-                    </ul>
-                    {% endif %}
                 </div>
             </div>
         </div>

@@ -13,10 +13,27 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from app.middleware import BackButtonMiddleware
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = BASE_DIR / 'templates'
+
+
+env_path = os.path.join(os.path.dirname(__file__), ".env")
+
+# if not os.path.exists(env_path):
+#     # Create the .env file and add the OPENAI_API_KEY placeholder
+#     with open(env_path, "w") as env_file:
+#         env_file.write("OPENAI_API_KEY=your_openai_api_key_here\n")
+#     print(f".env file created at {env_path}")
+# else:
+#     print(f".env file already exists at {env_path}")
+
+env = environ.Env()
+environ.Env.read_env(env_path)
+OPENAI_API_KEY = env("OPENAI_API_KEY")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -33,6 +50,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -41,8 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "app",
     "student",
-    'exam'
-
+    "exam",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +150,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "My Admin",  # Admin site title
+    "site_header": "My Admin",  # Admin site header
+    "welcome_sign": "Welcome to My Admin",  # Welcome text
+    "search_model": "auth.User",  # Default search model
+    "topmenu_links": [
+        # Additional links to show in the top menu
+        {
+            "name": "My Website",
+            "url": "https://www.example.com/",
+            "new_window": True,
+        },
+    ],
+    "show_sidebar": True,  # Whether to show the sidebar
+    "navigation_expanded": False,  # Whether the navigation is expanded by default
+    "hide_apps": [],  # Apps to hide from the admin site
+    "hide_models": [],  # Models to hide from the admin site
+    "related_modal_active": True,  # Enable related fields as modal dialogs
+    "custom_css": None,  # URL to custom CSS file
+    "custom_js": None,  # URL to custom JavaScript file
+}

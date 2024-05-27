@@ -9,7 +9,7 @@
 }
 
 .hidden{
-    display:  none;
+    display:  none !important;
 }
 .disabled {
     pointer-events: none; /* Disable mouse events */

@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from exam_pfe import settings
 from student.views import index
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",index, name= "home"),
+    path("", index, name="home"),
     path("db/", include("app.urls")),
     path("student/", include("student.urls")),
     path("exam/", include("exam.urls")),
+    # path("jet/", include("jet.urls", "jet")),
+    # path("jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

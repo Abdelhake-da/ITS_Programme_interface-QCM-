@@ -3,6 +3,8 @@ import pprint
 import uuid
 from django import template
 from app.models import Course, Question, Module
+from student.models import Student
+from exam.models import Exam
 
 register = template.Library()
 
@@ -78,8 +80,6 @@ def number_of_courses_and_questions(value):
     courses = Course.objects.filter(module= Module.objects.get(id = value))
     nb_questions = [len(Question.objects.filter(course= course)) for course in courses]
     return [len(courses),sum(nb_questions)]
-
-
 @register.filter
 def add_attr(field, extra_attrs):
     attrs = dict(field.field.widget.attrs)
@@ -91,13 +91,9 @@ def add_attr(field, extra_attrs):
 @register.simple_tag
 def increment(value):
     return value + 1
-
-
 @register.simple_tag
 def get_question(value):
     return Question.objects.get(id=value)
-
-
 @register.filter
 def get_value_from_dict(value, dic):
     return dic[value]
@@ -123,8 +119,23 @@ def check_box(value,lis):
     if value in lis[1]:
         return 2
     return 3
-
 @register.filter
 def format_time( ms):
     time_obj = datetime.datetime.utcfromtimestamp(float(ms) / 1000.0)
     return time_obj.strftime("%M:%S.%f")[:-3]
+@register.filter
+def get_student(user):
+    return Student.objects.get(user=user)
+@register.filter
+def get_date(date):
+    return "0000-00-00" if date == None else date.strftime("%Y-%m-%d")
+@register.filter
+def get_age(date):
+    print(date)
+    return 0 if date == None else datetime.date.today().year - date.year
+@register.filter()
+def get_std_info(std:Student):
+    return[len(std.module_exams.all()),len(std.courses_exams.all()),len(Exam.objects.filter(student=std))]
+@register.filter()
+def concatenate(text1, text2):
+    return f"{text1}-{text2}"

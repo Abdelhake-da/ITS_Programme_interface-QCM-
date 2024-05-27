@@ -4,8 +4,6 @@ function next(question) {
         questions[question].classList.add("hidden");
         questions[question + 1].classList.remove("hidden");
     }
-   
-
 }
 function previous(question) {
     if (question != 0) {
